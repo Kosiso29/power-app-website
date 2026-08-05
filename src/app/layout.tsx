@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Power App Website",
-  description: "A Next.js application.",
+  title: "Cyberwatts | Smart-Home Power Control",
+  description:
+    "Control your home from anywhere with Cyberwatts smart switching, scheduling, energy monitoring, and security alerts.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
