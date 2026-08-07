@@ -6,7 +6,6 @@ import {
   ChartBar,
   Check,
   ChevronDown,
-  Download,
   Home as HomeIcon,
   type LucideIcon,
   LockKeyhole,
@@ -14,7 +13,6 @@ import {
   Power,
   Smartphone,
   Wifi,
-  Zap,
 } from "lucide-react";
 
 type Feature = {
@@ -25,48 +23,48 @@ type Feature = {
 
 const features: Feature[] = [
   {
-    title: "Remote switching",
+    title: "Instant remote control",
     description:
-      "Turn lights, sockets, and connected appliances on or off from anywhere.",
+      "Switch lights, sockets, and appliances the moment you think of it, from anywhere.",
     icon: Power,
   },
   {
-    title: "Scheduling",
+    title: "Smarter schedules",
     description:
-      "Automate power routines for mornings, nights, work hours, and travel days.",
+      "Set routines that match real life: mornings, nights, trips, work hours, and weekends.",
     icon: CalendarClock,
   },
   {
-    title: "Energy monitoring",
+    title: "Live energy insight",
     description:
-      "See usage patterns clearly so you can reduce waste before it becomes cost.",
+      "See what is running, spot waste quickly, and make better power decisions before costs climb.",
     icon: ChartBar,
   },
   {
-    title: "Security alerts",
+    title: "Power-aware alerts",
     description:
-      "Get notified when power behavior needs your attention or a switch changes state.",
+      "Know when something changes, stays on too long, or needs your attention.",
     icon: BellRing,
   },
 ];
 
 const steps = [
   {
-    title: "Install device",
+    title: "Fit the controller",
     description:
-      "Connect Cyberwatts hardware to the circuits and appliance groups you want to manage.",
+      "Connect Cyberwatt to the switches, circuits, and appliance groups that matter most.",
     icon: PlugZap,
   },
   {
-    title: "Connect Wi-Fi",
+    title: "Pair once",
     description:
-      "Pair the device to your home network and label each switch by room or appliance.",
+      "Bring it online, name each zone, and make every controlled point easy to recognize.",
     icon: Wifi,
   },
   {
-    title: "Control from app",
+    title: "Run it anywhere",
     description:
-      "Use the app to monitor usage, trigger switches, and keep routines running.",
+      "Use the app to switch, schedule, monitor, and stay in command wherever the day takes you.",
     icon: Smartphone,
   },
 ];
@@ -74,19 +72,19 @@ const steps = [
 const testimonials = [
   {
     quote:
-      "Cyberwatts makes power feel visible. I know what is running, what is scheduled, and what needs to be turned off.",
+      "Cyberwatt takes the guesswork out of power. I know what is on, what is planned, and what needs action.",
     name: "Home pilot user",
     role: "Smart-home early adopter",
   },
   {
     quote:
-      "The product story is simple: less guessing, more control, and a calmer way to manage electricity.",
+      "It feels like the missing control layer for homes and small properties: simple, fast, and confidence-building.",
     name: "Facilities operator",
     role: "Small property manager",
   },
   {
     quote:
-      "The biggest win is remote confidence. You do not need to be in the room to act on power usage.",
+      "Remote access changes the feeling completely. I can act on power issues without being in the room.",
     name: "Rental owner",
     role: "Multi-unit host",
   },
@@ -96,30 +94,30 @@ const pricing = [
   {
     name: "Starter",
     price: "Pilot",
-    description: "For one home or early test installation.",
-    points: ["Remote switching", "Energy dashboard", "Basic schedules"],
+    description: "For proving smart power control in one home.",
+    points: ["Remote switching", "Energy view", "Core schedules"],
   },
   {
     name: "Smart Home",
     price: "Custom",
-    description: "For daily household power automation.",
+    description: "For homes that want everyday control, visibility, and automation.",
     points: [
-      "Multiple switch groups",
-      "Usage insights",
-      "Security alerts",
-      "Priority setup",
+      "Multiple zones",
+      "Usage intelligence",
+      "Power alerts",
+      "Guided setup",
     ],
     featured: true,
   },
   {
     name: "Property",
     price: "Custom",
-    description: "For rentals, small offices, and managed spaces.",
+    description: "For rentals, offices, and spaces that need managed power oversight.",
     points: [
-      "Multi-device planning",
+      "Multi-device rollout",
       "Owner visibility",
-      "Schedule governance",
-      "Deployment support",
+      "Routine controls",
+      "Deployment guidance",
     ],
   },
 ];
@@ -127,61 +125,64 @@ const pricing = [
 const capabilities: Feature[] = [
   {
     title: "Control",
-    description: "Switch connected appliances instantly",
+    description: "Act on connected appliances instantly",
     icon: HomeIcon,
   },
   {
     title: "Automate",
-    description: "Schedule routines around your day",
+    description: "Let routines handle repeated power moments",
     icon: CalendarClock,
   },
   {
     title: "Measure",
-    description: "Understand energy usage patterns",
+    description: "See the habits behind your energy use",
     icon: ChartBar,
   },
   {
     title: "Protect",
-    description: "Keep access and alerts trustworthy",
+    description: "Keep access, alerts, and control reliable",
     icon: LockKeyhole,
   },
 ];
 
 const faqs = [
   {
-    question: "What does Cyberwatts control?",
+    question: "What does Cyberwatt control?",
     answer:
-      "Cyberwatts is positioned for connected switches, appliance groups, and smart-home power routines.",
+      "Cyberwatt is designed for connected switches, appliance groups, and the power routines that shape daily home life.",
   },
   {
     question: "Can I control my home remotely?",
     answer:
-      "Yes. The core website message is remote switch control from anywhere through the app.",
+      "Yes. Cyberwatt is built around remote power control, so you can act even when you are away from the room or property.",
   },
   {
     question: "Is this only an energy dashboard?",
     answer:
-      "No. The product combines control, scheduling, monitoring, and alerts in one smart-home power experience.",
+      "No. It combines switching, scheduling, monitoring, and alerts into one practical smart-home power layer.",
   },
   {
     question: "Why is pricing custom?",
     answer:
-      "Hardware count, installation scope, and property size affect the final package, so the site keeps pricing conversation-led.",
+      "Every setup is different. Device count, installation scope, and property size shape the right package.",
   },
 ];
 
 function AppPreview() {
   return (
-    <div className="app-preview" aria-label="Cyberwatts app preview">
+    <div className="app-preview" aria-label="Cyberwatt app preview">
       <div className="phone-shell">
         <div className="phone-status">
-          <span>Cyberwatts</span>
+          <span className="phone-brand">
+            <LogoImage className="phone-logo-mark" />
+            <LogoWordmark className="phone-wordmark" />
+          </span>
           <strong>Online</strong>
         </div>
         <div className="power-widget">
-          <p>Home power</p>
+          <p>Live power</p>
           <strong>82%</strong>
-          <span>Available capacity</span>
+          <span>Ready capacity</span>
         </div>
         <div className="switch-list">
           {["Living room", "Kitchen", "Security lights"].map((item, index) => (
@@ -201,6 +202,23 @@ function AppPreview() {
         </div>
       </div>
     </div>
+  );
+}
+
+function LogoImage({ className = "" }: { className?: string }) {
+  return (
+    <span className={`logo-image ${className}`} aria-hidden="true">
+      <Image src="/cyberwatt-logo.png" alt="" fill sizes="72px" />
+    </span>
+  );
+}
+
+function LogoWordmark({ className = "" }: { className?: string }) {
+  return (
+    <span className={`logo-wordmark ${className}`}>
+      <span>Cyber</span>
+      <span>watt</span>
+    </span>
   );
 }
 
@@ -227,7 +245,7 @@ export default function Home() {
     <main>
       <section className="hero">
         <Image
-          src="/cyberwatts-hero.png"
+          src="/cyberwatt-hero.png"
           alt="Modern smart home with connected energy control devices"
           fill
           priority
@@ -237,11 +255,9 @@ export default function Home() {
         <div className="hero-shade" />
 
         <header className="nav">
-          <a className="brand" href="#top" aria-label="Cyberwatts home">
-            <span>
-              <Zap size={18} aria-hidden="true" />
-            </span>
-            Cyberwatts
+          <a className="brand" href="#top" aria-label="Cyberwatt home">
+            <LogoImage className="brand-mark" />
+            <LogoWordmark className="brand-wordmark" />
           </a>
           <nav aria-label="Main navigation">
             <a href="#features">Features</a>
@@ -249,29 +265,31 @@ export default function Home() {
             <a href="#pricing">Pricing</a>
             <a href="#faq">FAQ</a>
           </nav>
-          <a className="nav-button" href="#download">
-            Get the app
+          <a className="nav-button" href="#contact">
+            Get started
             <ArrowRight size={16} aria-hidden="true" />
           </a>
         </header>
 
         <div id="top" className="hero-inner">
           <div className="hero-copy">
-            <p className="eyebrow">Smart-home power startup</p>
-            <h1>Cyberwatts</h1>
+            <p className="eyebrow">Smart power for any home</p>
+            <h1>
+              <span>Take </span>
+              <span>Control</span>
+            </h1>
             <p className="hero-lede">
-              Control your home from anywhere. Switch appliances remotely,
-              schedule routines, monitor energy, and stay ahead of power
-              events.
+              Switch appliances, automate routines, and see your energy clearly
+              from one calm, connected command center.
             </p>
             <div id="download" className="download-row">
               <a href="#contact" className="primary-action">
-                <Download size={18} aria-hidden="true" />
-                Download for iOS
+                Get started
+                <ArrowRight size={18} aria-hidden="true" />
               </a>
-              <a href="#contact" className="secondary-action">
-                <Download size={18} aria-hidden="true" />
-                Download for Android
+              <a href="#how" className="secondary-action">
+                See how it works
+                <ArrowRight size={18} aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -279,26 +297,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="signal-strip" aria-label="Cyberwatts highlights">
-        <div>
-          <strong>Remote</strong>
-          <span>Switch control from anywhere</span>
-        </div>
-        <div>
-          <strong>Scheduled</strong>
-          <span>Daily routines without manual checks</span>
-        </div>
-        <div>
-          <strong>Visible</strong>
-          <span>Energy usage that is easy to understand</span>
-        </div>
-      </section>
-
       <section id="features" className="section">
         <SectionIntro
           label="Features"
-          title="Everything a modern smart-power product needs on day one."
-          text="A focused homepage for remote control, automation, monitoring, and trust."
+          title="Command every switch, schedule, and power moment from one clean app."
+          text="Cyberwatt brings remote control, automation, energy insight, and timely alerts into a premium smart-home power experience."
         />
         <div className="feature-grid">
           {features.map((feature) => {
@@ -318,8 +321,8 @@ export default function Home() {
       <section id="how" className="how-section">
         <SectionIntro
           label="How it works"
-          title="Install, connect, and control."
-          text="The journey should feel as simple as the best smart-home products: clear setup, fast pairing, and direct control."
+          title="From installed to in control, without the complexity."
+          text="A simple path from hardware setup to everyday power confidence: connect, label, automate, and act."
         />
         <div className="steps">
           {steps.map((step, index) => {
@@ -339,12 +342,12 @@ export default function Home() {
 
       <section className="product-band">
         <div>
-          <p className="eyebrow dark">Built for calm control</p>
-          <h2>Cyberwatts turns home power into a system you can see and act on.</h2>
+          <p className="eyebrow dark">Built for confident control</p>
+          <h2>Cyberwatt makes home power visible, responsive, and easy to command.</h2>
           <p>
-            The experience combines the premium darkness of energy hardware
-            brands with the clarity of modern SaaS: direct actions, readable
-            data, and fewer decisions hidden behind technical noise.
+            The experience turns everyday electricity into a cleaner system:
+            direct actions, readable energy signals, fewer surprises, and less
+            technical noise between you and the switches you rely on.
           </p>
         </div>
         <div className="capability-list">
@@ -367,7 +370,7 @@ export default function Home() {
       <section className="section testimonials-section">
         <SectionIntro
           label="Testimonials"
-          title="The promise is simple: more control, less wasted power."
+          title="Built for people who want fewer power surprises."
         />
         <div className="testimonial-grid">
           {testimonials.map((testimonial) => (
@@ -383,8 +386,8 @@ export default function Home() {
       <section id="pricing" className="section pricing-section">
         <SectionIntro
           label="Pricing"
-          title="Packages for homes, pilots, and managed spaces."
-          text="Keep the buying path clear while installation and hardware scope are still flexible."
+          title="Choose the right path for your first smart-power rollout."
+          text="Start small, scale deliberately, and match the package to the number of switches, rooms, and properties you want to control."
         />
         <div className="pricing-grid">
           {pricing.map((plan) => (
@@ -416,7 +419,7 @@ export default function Home() {
       <section id="faq" className="faq-section">
         <SectionIntro
           label="FAQ"
-          title="Clear answers before someone starts a pilot."
+          title="What to know before your first Cyberwatt setup."
         />
         <div className="faq-list">
           {faqs.map((item) => (
@@ -433,14 +436,14 @@ export default function Home() {
 
       <section id="contact" className="cta-section">
         <div>
-          <p className="eyebrow dark">Call to action</p>
-          <h2>Make every switch in your home reachable.</h2>
+          <p className="eyebrow dark">Start smarter</p>
+          <h2>Bring your home’s power into reach.</h2>
           <p>
-            Start with a Cyberwatts pilot and turn power management into a
-            modern smart-home experience.
+            Launch a Cyberwatt pilot and turn everyday power control into a
+            sharper, more connected smart-home experience.
           </p>
         </div>
-        <a href="mailto:hello@cyberwatts.com" className="primary-action light">
+        <a href="mailto:hello@cyberwatt.com" className="primary-action light">
           Request early access
           <ArrowRight size={18} aria-hidden="true" />
         </a>

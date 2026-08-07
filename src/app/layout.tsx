@@ -2,9 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Cyberwatts | Smart-Home Power Control",
+  title: "Cyberwatt | Smart-Home Power Control",
   description:
-    "Control your home from anywhere with Cyberwatts smart switching, scheduling, energy monitoring, and security alerts.",
+    "Own every switch, schedule, and power moment with Cyberwatt smart-home control.",
+  icons: {
+    icon: "/cyberwatt-logo.png",
+    apple: "/cyberwatt-logo.png",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
