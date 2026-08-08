@@ -15,6 +15,8 @@ import {
   Wifi,
 } from "lucide-react";
 
+const APP_URL = "https://app.cyberwattenergy.com";
+
 type Feature = {
   title: string;
   description: string;
@@ -295,7 +297,7 @@ export default function Home() {
             <a href="#pricing">Pricing</a>
             <a href="#faq">FAQ</a>
           </nav>
-          <a className="nav-button" href="#contact">
+          <a className="nav-button" href={APP_URL}>
             Get started
             <ArrowRight size={16} aria-hidden="true" />
           </a>
@@ -313,7 +315,7 @@ export default function Home() {
               from one calm, connected command center.
             </p>
             <div id="download" className="download-row">
-              <a href="#contact" className="primary-action">
+              <a href={APP_URL} className="primary-action">
                 Get started
                 <ArrowRight size={18} aria-hidden="true" />
               </a>
