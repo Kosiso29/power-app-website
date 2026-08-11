@@ -11,6 +11,10 @@
   --muted: #64748b;
   --line: rgba(15, 23, 42, 0.12);
   --dark-line: rgba(248, 250, 252, 0.16);
+  --site-max-width: 1180px;
+  --site-gutter: 20px;
+  --site-inline-width: calc(100% - (var(--site-gutter) * 2));
+  --site-inline-padding: max(var(--site-gutter), calc((100% - var(--site-max-width)) / 2));
 }
 
 @theme inline {
@@ -97,8 +101,8 @@ main {
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 28px;
-  width: calc(100% - 40px);
-  max-width: 1180px;
+  width: var(--site-inline-width);
+  max-width: var(--site-max-width);
   margin: 0 auto;
   padding: 24px 0;
   color: var(--white);
@@ -201,8 +205,8 @@ main {
   grid-template-columns: minmax(0, 0.92fr) minmax(320px, 0.62fr);
   align-items: center;
   gap: 48px;
-  width: calc(100% - 40px);
-  max-width: 1180px;
+  width: var(--site-inline-width);
+  max-width: var(--site-max-width);
   min-height: calc(90svh - 86px);
   margin: 0 auto;
   padding: 64px 0 100px;
@@ -710,8 +714,8 @@ main {
 .section,
 .how-section,
 .faq-section {
-  width: calc(100% - 40px);
-  max-width: 1180px;
+  width: var(--site-inline-width);
+  max-width: var(--site-max-width);
   margin: 0 auto;
   padding: 108px 0;
 }
@@ -796,11 +800,146 @@ main {
   line-height: 1.68;
 }
 
+.feature-showcase-section {
+  width: 100%;
+  padding: 104px var(--site-inline-padding) 118px;
+  background: linear-gradient(180deg, #071a55 0%, var(--blue) 46%, var(--cyan) 100%);
+}
+
+.feature-showcase-header {
+  max-width: 780px;
+  margin-bottom: 44px;
+  color: var(--white);
+}
+
+.feature-showcase-header p {
+  margin: 0 0 16px;
+  color: rgba(248, 250, 252, 0.76);
+  font-size: 0.84rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.feature-showcase-header h2 {
+  margin: 0;
+  color: var(--white);
+  font-size: clamp(2.55rem, 5vw, 4.8rem);
+  line-height: 0.98;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.feature-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.feature-showcase-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 570px;
+  border: 1px solid rgba(37, 99, 235, 0.42);
+  border-radius: 8px;
+  background: var(--navy);
+  isolation: isolate;
+}
+
+.feature-showcase-card::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  content: "";
+  background: linear-gradient(
+    180deg,
+    rgba(10, 15, 31, 0.86) 0%,
+    rgba(10, 15, 31, 0.54) 33%,
+    rgba(10, 15, 31, 0.1) 66%,
+    rgba(10, 15, 31, 0.24) 100%
+  );
+}
+
+.feature-showcase-card::after {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  content: "";
+  background: rgba(10, 15, 31, 0.34);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 500ms ease;
+}
+
+.feature-showcase-card:hover::after {
+  opacity: 1;
+}
+
+.feature-showcase-image {
+  position: absolute;
+  inset: -24px 0;
+  background-color: var(--navy);
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  transform: translateY(0);
+  transition:
+    filter 700ms ease,
+    transform 700ms ease;
+  will-change: transform;
+}
+
+.feature-showcase-image::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background-image: inherit;
+  background-position: inherit;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: translateY(0) scale(1.04);
+  animation: featureImageBreath 16s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.feature-showcase-card:hover .feature-showcase-image {
+  filter: saturate(1.1) contrast(1.04);
+  transform: translateY(-24px);
+}
+
+.feature-showcase-copy {
+  position: relative;
+  z-index: 4;
+  max-width: 300px;
+  padding: 40px 32px;
+  color: var(--white);
+}
+
+.feature-showcase-copy svg {
+  display: block;
+  color: var(--cyan);
+  filter: drop-shadow(0 0 14px rgba(6, 182, 212, 0.42));
+}
+
+.feature-showcase-copy h3 {
+  margin: 22px 0 0;
+  color: var(--white);
+  font-size: clamp(2rem, 2.65vw, 2.8rem);
+  line-height: 1.05;
+  font-weight: 400;
+}
+
+.feature-showcase-copy p {
+  margin: 18px 0 0;
+  color: rgba(248, 250, 252, 0.78);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
 .how-section {
   max-width: none;
   width: 100%;
-  padding-right: max(20px, calc((100% - 1180px) / 2));
-  padding-left: max(20px, calc((100% - 1180px) / 2));
+  padding-right: var(--site-inline-padding);
+  padding-left: var(--site-inline-padding);
   background: #eef6ff;
 }
 
@@ -836,7 +975,7 @@ main {
   grid-template-columns: 0.9fr 1.1fr;
   align-items: center;
   gap: 56px;
-  padding: 108px max(20px, calc((100% - 1180px) / 2));
+  padding: 108px var(--site-inline-padding);
   color: var(--white);
   background:
     linear-gradient(135deg, rgba(37, 99, 235, 0.18), rgba(6, 182, 212, 0.12)),
@@ -1034,8 +1173,8 @@ main {
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: 34px;
-  width: calc(100% - 40px);
-  max-width: 1180px;
+  width: var(--site-inline-width);
+  max-width: var(--site-max-width);
   margin: 0 auto 80px;
   padding: 44px;
   border-radius: 8px;
@@ -1171,6 +1310,16 @@ main {
   }
 }
 
+@keyframes featureImageBreath {
+  from {
+    transform: translateY(0) scale(1.04);
+  }
+
+  to {
+    transform: translateY(-10px) scale(1.13);
+  }
+}
+
 @keyframes barBreathe {
   0%,
   100% {
@@ -1217,9 +1366,21 @@ main {
   .capability-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .feature-showcase-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .feature-showcase-card {
+    min-height: 520px;
+  }
 }
 
 @media (max-width: 720px) {
+  :root {
+    --site-gutter: 14px;
+  }
+
   .hero {
     min-height: auto;
   }
@@ -1243,7 +1404,7 @@ main {
   .section,
   .faq-section,
   .cta-section {
-    width: calc(100% - 28px);
+    width: var(--site-inline-width);
   }
 
   .nav {
@@ -1282,11 +1443,25 @@ main {
   }
 
   .feature-grid,
+  .feature-showcase-grid,
   .steps,
   .testimonial-grid,
   .pricing-grid,
   .capability-list {
     grid-template-columns: 1fr;
+  }
+
+  .feature-showcase-section {
+    padding: 78px var(--site-inline-padding);
+  }
+
+  .feature-showcase-card {
+    min-height: 500px;
+  }
+
+  .feature-showcase-copy {
+    min-height: auto;
+    padding: 22px;
   }
 
   .section,
