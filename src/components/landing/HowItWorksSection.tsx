@@ -1,5 +1,6 @@
 import { PlugZap, Smartphone, Wifi } from "lucide-react";
 
+import { Cyberwatt3DLogo } from "./Cyberwatt3DLogo";
 import { SectionIntro } from "./SectionIntro";
 
 const steps = [
@@ -26,6 +27,7 @@ const steps = [
 export function HowItWorksSection() {
   return (
     <section id="how" className="how-section">
+      <Cyberwatt3DLogo />
       <SectionIntro
         label="How it works"
         title="From installed to in control, without the complexity."
