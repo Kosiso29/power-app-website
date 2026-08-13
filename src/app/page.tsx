@@ -6,6 +6,7 @@ import {
   HowItWorksSection,
   PricingSection,
   ProductBandSection,
+  RemoteMomentSection,
   TestimonialsSection,
 } from "@/components/landing";
 
@@ -15,6 +16,7 @@ export default function Home() {
       <HeroSection />
       <FeatureShowcaseSection />
       <HowItWorksSection />
+      <RemoteMomentSection />
       <ProductBandSection />
       <TestimonialsSection />
       <PricingSection />

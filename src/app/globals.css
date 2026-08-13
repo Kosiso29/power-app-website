@@ -753,6 +753,98 @@ main {
   line-height: 1.76;
 }
 
+.remote-moment-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: clamp(480px, 68vh, 720px);
+  overflow: hidden;
+  isolation: isolate;
+  background-image:
+    linear-gradient(90deg, rgba(10, 15, 31, 0.72), rgba(10, 15, 31, 0.24) 48%, rgba(6, 182, 212, 0.14)),
+    linear-gradient(180deg, rgba(248, 250, 252, 0.1), rgba(10, 15, 31, 0.22)),
+    url("/cyberwatt-child-remote-black-tilt.png");
+  background-position: center;
+  background-size: cover;
+  border-top: 1px solid rgba(37, 99, 235, 0.2);
+  border-bottom: 1px solid rgba(6, 182, 212, 0.26);
+}
+
+.remote-moment-section::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  content: "";
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(10, 15, 31, 0.72), rgba(10, 15, 31, 0.12) 52%, rgba(6, 182, 212, 0.12)),
+    radial-gradient(circle at 75% 50%, rgba(6, 182, 212, 0.2), transparent 32%);
+}
+
+.remote-moment-copy {
+  position: relative;
+  z-index: 2;
+  width: var(--site-inline-width);
+  max-width: var(--site-max-width);
+  margin: 0 auto;
+  color: var(--white);
+}
+
+.remote-moment-copy p {
+  width: fit-content;
+  margin: 0 0 16px;
+  color: var(--cyan);
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-shadow: 0 0 24px rgba(6, 182, 212, 0.42);
+}
+
+.remote-moment-copy h2 {
+  max-width: 560px;
+  margin: 0;
+  color: var(--white);
+  font-size: clamp(2.45rem, 5vw, 5.25rem);
+  line-height: 0.98;
+  font-weight: 950;
+  text-shadow: 0 18px 44px rgba(10, 15, 31, 0.42);
+}
+
+.remote-moment-copy h2 span {
+  display: inline;
+  color: var(--blue);
+}
+
+.remote-moment-copy > span {
+  display: block;
+  max-width: 520px;
+  margin-top: 22px;
+  color: rgba(248, 250, 252, 0.78);
+  font-size: clamp(1rem, 1.4vw, 1.16rem);
+  line-height: 1.74;
+  text-shadow: 0 10px 26px rgba(10, 15, 31, 0.46);
+}
+
+@media (min-width: 769px) {
+  .remote-moment-section {
+    background-attachment: fixed;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .remote-moment-section {
+    view-timeline-name: --remote-moment;
+    view-timeline-axis: block;
+  }
+
+  .remote-moment-copy {
+    animation: remoteMomentCopy both ease-out;
+    animation-timeline: --remote-moment;
+    animation-range: entry 0% exit 100%;
+  }
+}
+
 .feature-grid,
 .testimonial-grid,
 .pricing-grid {
@@ -1556,6 +1648,24 @@ main {
   }
 }
 
+@keyframes remoteMomentCopy {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+  }
+
+  24%,
+  76% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    opacity: 0.22;
+    transform: translate3d(0, -18px, 0);
+  }
+}
+
 @keyframes featureImageBreath {
   from {
     transform: translateY(0) scale(1.04);
@@ -1595,6 +1705,11 @@ main {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
   }
+
+  .remote-moment-copy {
+    animation: none !important;
+    opacity: 1;
+  }
 }
 
 @media (max-width: 980px) {
@@ -1630,6 +1745,10 @@ main {
   .feature-showcase-card {
     min-height: 520px;
   }
+
+  .remote-moment-copy h2 {
+    max-width: 520px;
+  }
 }
 
 @media (max-width: 720px) {
@@ -1639,6 +1758,32 @@ main {
 
   .hero {
     min-height: auto;
+  }
+
+  .remote-moment-section {
+    align-items: flex-start;
+    min-height: 720px;
+    padding-top: 84px;
+    background-position: 64% center;
+  }
+
+  .remote-moment-section::before {
+    background:
+      linear-gradient(180deg, rgba(10, 15, 31, 0.84), rgba(10, 15, 31, 0.42) 48%, rgba(10, 15, 31, 0.68)),
+      radial-gradient(circle at 50% 74%, rgba(6, 182, 212, 0.2), transparent 34%);
+  }
+
+  .remote-moment-copy p {
+    margin-bottom: 12px;
+  }
+
+  .remote-moment-copy h2 {
+    max-width: 360px;
+  }
+
+  .remote-moment-copy > span {
+    max-width: 350px;
+    margin-top: 18px;
   }
 
   .hero-visual {

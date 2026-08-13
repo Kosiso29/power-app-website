@@ -5,4 +5,5 @@ export { HeroSection } from "./HeroSection";
 export { HowItWorksSection } from "./HowItWorksSection";
 export { PricingSection } from "./PricingSection";
 export { ProductBandSection } from "./ProductBandSection";
+export { RemoteMomentSection } from "./RemoteMomentSection";
 export { TestimonialsSection } from "./TestimonialsSection";
