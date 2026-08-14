@@ -757,17 +757,11 @@ main {
   position: relative;
   display: flex;
   align-items: center;
-  min-height: clamp(480px, 68vh, 720px);
+  min-height: clamp(660px, 88vh, 960px);
+  padding-top: clamp(72px, 10vh, 132px);
   overflow: hidden;
   isolation: isolate;
-  background-image:
-    linear-gradient(90deg, rgba(10, 15, 31, 0.72), rgba(10, 15, 31, 0.24) 48%, rgba(6, 182, 212, 0.14)),
-    linear-gradient(180deg, rgba(248, 250, 252, 0.1), rgba(10, 15, 31, 0.22)),
-    url("/cyberwatt-child-remote-black-tilt.png");
-  background-position: center;
-  background-size: cover;
-  border-top: 1px solid rgba(37, 99, 235, 0.2);
-  border-bottom: 1px solid rgba(6, 182, 212, 0.26);
+  background: linear-gradient(180deg, #f8fafc 0%, #f8fcff 100%);
 }
 
 .remote-moment-section::before {
@@ -776,9 +770,33 @@ main {
   z-index: 0;
   content: "";
   pointer-events: none;
-  background:
+  background-image:
     linear-gradient(90deg, rgba(10, 15, 31, 0.72), rgba(10, 15, 31, 0.12) 52%, rgba(6, 182, 212, 0.12)),
-    radial-gradient(circle at 75% 50%, rgba(6, 182, 212, 0.2), transparent 32%);
+    radial-gradient(circle at 75% 50%, rgba(6, 182, 212, 0.2), transparent 32%),
+    linear-gradient(90deg, rgba(10, 15, 31, 0.72), rgba(10, 15, 31, 0.24) 48%, rgba(6, 182, 212, 0.14)),
+    linear-gradient(180deg, rgba(248, 250, 252, 0.1), rgba(10, 15, 31, 0.22)),
+    url("/cyberwatt-child-remote-black-tilt.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.remote-moment-curve {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: clamp(100px, 12vw, 176px);
+  pointer-events: none;
+}
+
+.remote-moment-curve path {
+  fill: currentColor;
+}
+
+.remote-moment-curve-top {
+  top: -1px;
+  color: #f8fafc;
 }
 
 .remote-moment-copy {
@@ -827,7 +845,7 @@ main {
 }
 
 @media (min-width: 769px) {
-  .remote-moment-section {
+  .remote-moment-section::before {
     background-attachment: fixed;
   }
 }
@@ -872,7 +890,6 @@ main {
 
 .feature-card h3,
 .steps h3,
-.capability-list h3,
 .pricing-card h3 {
   margin: 22px 0 0;
   color: var(--navy);
@@ -883,7 +900,6 @@ main {
 
 .feature-card p,
 .steps p,
-.capability-list p,
 .pricing-card p,
 .testimonial-grid p {
   margin: 12px 0 0;
@@ -1309,59 +1325,368 @@ main {
 }
 
 .product-band {
+  position: relative;
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
+  grid-template-columns: minmax(0, 1.36fr) minmax(280px, 0.64fr);
   align-items: center;
-  gap: 56px;
-  padding: 108px var(--site-inline-padding);
+  gap: clamp(30px, 5vw, 72px);
+  min-height: 720px;
+  padding: 112px var(--site-inline-padding) 118px;
+  overflow: visible;
+  isolation: isolate;
+  color: var(--navy);
+  background:
+    radial-gradient(circle at 86% 12%, rgba(6, 182, 212, 0.22), transparent 24%),
+    linear-gradient(180deg, #f8fcff 0%, #e9f9fd 56%, #d8f6fb 100%);
+}
+
+.product-band::before {
+  position: absolute;
+  inset: 34px var(--site-inline-padding);
+  z-index: 0;
+  border: 1px solid rgba(37, 99, 235, 0.12);
+  content: "";
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(37, 99, 235, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.07) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+}
+
+.product-band-tape {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 7;
+  width: clamp(180px, 19vw, 286px);
+  height: clamp(67px, 6.5vw, 105px);
+  transform: translate(-50%, -48%) rotate(-3deg);
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(225, 242, 246, 0.72), rgba(169, 211, 220, 0.36)),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.18) 0 1px, transparent 1px 6px),
+    repeating-linear-gradient(-45deg, rgba(6, 182, 212, 0.14) 0 8px, rgba(10, 15, 31, 0.04) 8px 16px),
+    rgba(205, 234, 240, 0.64);
+  border: 1px solid rgba(151, 203, 215, 0.54);
+  backdrop-filter: blur(8px) saturate(1.15);
+}
+
+.product-band-tape::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    radial-gradient(circle at 18% 32%, rgba(255, 255, 255, 0.34) 0 2px, transparent 3px),
+    radial-gradient(circle at 76% 58%, rgba(10, 15, 31, 0.06) 0 1px, transparent 3px),
+    linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  opacity: 0.74;
+}
+
+.product-band-tape::after {
+  position: absolute;
+  top: 12%;
+  bottom: 12%;
+  left: 50%;
+  width: 1px;
+  content: "";
+  transform: rotate(7deg);
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.power-collage::after {
+  position: absolute;
+  top: var(--collage-trace-top);
+  right: var(--collage-trace-right);
+  z-index: 0;
+  width: var(--collage-trace-size);
+  height: var(--collage-trace-size);
+  border: 1px dashed var(--collage-trace-color);
+  content: "";
+  transform: rotate(var(--collage-trace-rotation));
+  pointer-events: none;
+}
+
+.product-band-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 520px;
+  justify-self: end;
+  text-align: right;
+}
+
+.product-band-copy .eyebrow {
+  color: var(--blue);
+}
+
+.product-band-copy h2 {
+  color: var(--navy);
+}
+
+.product-band-copy p {
+  color: #315266;
+}
+
+.power-collage {
+  position: relative;
+  z-index: 1;
+  --collage-trace-top: calc(10% - 90px);
+  --collage-trace-right: calc(2% - 120px);
+  --collage-trace-size: 178px;
+  --collage-trace-rotation: 18deg;
+  --collage-trace-color: rgba(6, 182, 212, 0.22);
+  --collage-logo-shadow-color: rgba(6, 182, 212, 0.11);
+  --collage-logo-ratio: 0.644;
+  min-height: 540px;
+  perspective: 1200px;
+}
+
+.power-collage::before {
+  position: absolute;
+  top: 48%;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 2px;
+  content: "";
+  transform: rotate(-4deg);
+  background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.42), rgba(6, 182, 212, 0.34), transparent);
+}
+
+.power-collage-spark {
+  position: absolute;
+  right: 8%;
+  bottom: 15%;
+  z-index: 5;
+  width: 78px;
+  height: 78px;
+  clip-path: polygon(50% 0, 61% 34%, 100% 50%, 61% 66%, 50% 100%, 39% 66%, 0 50%, 39% 34%);
+  background: var(--lime);
+  filter: drop-shadow(0 0 22px rgba(132, 204, 22, 0.5));
+}
+
+.power-collage-stamp {
+  position: absolute;
+  right: 2%;
+  top: 10%;
+  z-index: 6;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 118px;
+  height: 118px;
+  border: 2px solid rgba(37, 99, 235, 0.58);
+  transform: rotate(18deg);
+  background: rgba(248, 252, 255, 0.52);
+  box-shadow: inset 0 0 0 8px rgba(6, 182, 212, 0.08);
+}
+
+.power-collage-stamp-logo {
+  width: 76px;
+  height: 76px;
+  object-fit: contain;
+  opacity: 0.56;
+  filter: drop-shadow(0 8px 18px rgba(37, 99, 235, 0.24));
+}
+
+.power-collage-logo-shadow {
+  position: absolute;
+  top: var(--collage-trace-top);
+  right: var(--collage-trace-right);
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--collage-trace-size);
+  height: var(--collage-trace-size);
+  transform: rotate(var(--collage-trace-rotation));
+  pointer-events: none;
+}
+
+.power-collage-logo-shadow::before {
+  width: calc(var(--collage-trace-size) * var(--collage-logo-ratio));
+  height: calc(var(--collage-trace-size) * var(--collage-logo-ratio));
+  content: "";
+  background: var(--collage-logo-shadow-color);
+  mask: url("/cyberwatt-logo.png") center / contain no-repeat;
+  -webkit-mask: url("/cyberwatt-logo.png") center / contain no-repeat;
+  filter: drop-shadow(0 0 14px var(--collage-logo-shadow-color));
+}
+
+.power-print {
+  position: absolute;
+  z-index: 2;
+  width: clamp(190px, 18vw, 292px);
+  margin: 0;
+  padding: 11px;
+  border: 1px solid rgba(248, 252, 255, 0.92);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow:
+    0 28px 52px rgba(10, 15, 31, 0.18),
+    0 2px 8px rgba(37, 99, 235, 0.08);
+  transform-style: preserve-3d;
+  transition:
+    transform 460ms ease,
+    box-shadow 460ms ease;
+}
+
+.power-print::before {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  z-index: 3;
+  width: 72px;
+  height: 34px;
+  content: "";
+  transform: translateX(-50%) rotate(-3deg);
+  background:
+    linear-gradient(135deg, rgba(248, 250, 252, 0.38), rgba(6, 182, 212, 0.2)),
+    rgba(255, 255, 255, 0.42);
+  box-shadow: 0 8px 18px rgba(10, 15, 31, 0.08);
+  backdrop-filter: blur(8px);
+}
+
+.power-print-image {
+  position: relative;
+  display: block;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border: 1px solid rgba(10, 15, 31, 0.08);
+  background: var(--navy);
+}
+
+.power-print-image img {
+  object-fit: cover;
+  transform: scale(1.04);
+  transition: transform 600ms ease;
+}
+
+.power-print figcaption {
+  min-height: 58px;
+  margin-top: 14px;
+  padding: 0 5px 2px;
+}
+
+.power-print strong,
+.power-print span {
+  display: block;
+}
+
+.power-print strong {
+  color: var(--navy);
+  font-size: 0.98rem;
+  line-height: 1.2;
+  font-weight: 950;
+}
+
+.power-print figcaption span {
+  margin-top: 5px;
+  color: #315266;
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.power-print:hover {
+  z-index: 8;
+  box-shadow:
+    0 38px 70px rgba(10, 15, 31, 0.22),
+    0 0 34px rgba(6, 182, 212, 0.18);
+}
+
+.power-print:hover .power-print-image img {
+  transform: scale(1.1) translateY(-2%);
+}
+
+.power-print-1 {
+  top: 68px;
+  left: 0;
+  transform: rotate(-9deg) translateZ(18px);
+}
+
+.power-print-1:hover {
+  transform: rotate(-6deg) translate3d(0, -18px, 32px);
+}
+
+.power-print-2 {
+  top: 12px;
+  left: 20%;
+  z-index: 3;
+  width: clamp(210px, 20vw, 320px);
+  transform: rotate(3deg) translateZ(32px);
+}
+
+.power-print-2:hover {
+  transform: rotate(1deg) translate3d(0, -18px, 48px);
+}
+
+.power-print-3 {
+  top: 150px;
+  left: 36%;
+  z-index: 4;
+  width: clamp(220px, 21vw, 336px);
+  transform: rotate(-3deg) translateZ(58px);
+}
+
+.power-print-3:hover {
+  transform: rotate(-1deg) translate3d(0, -18px, 72px);
+}
+
+.power-print-4 {
+  top: 74px;
+  right: 13%;
+  z-index: 2;
+  transform: rotate(8deg) translateZ(20px);
+}
+
+.power-print-4:hover {
+  transform: rotate(5deg) translate3d(0, -18px, 34px);
+}
+
+.power-print-5 {
+  right: 0;
+  bottom: 22px;
+  z-index: 5;
+  width: clamp(200px, 18vw, 296px);
+  transform: rotate(-7deg) translateZ(44px);
+}
+
+.power-print-5:hover {
+  transform: rotate(-4deg) translate3d(0, -18px, 58px);
+}
+
+.testimonials-section {
+  position: relative;
+  z-index: 0;
   color: var(--white);
+  isolation: isolate;
+}
+
+.testimonials-section::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  z-index: -1;
+  width: 100vw;
+  content: "";
+  transform: translateX(-50%);
   background:
     linear-gradient(135deg, rgba(37, 99, 235, 0.18), rgba(6, 182, 212, 0.12)),
     var(--navy);
 }
 
-.product-band h2,
-.product-band p {
-  color: var(--white);
+.testimonials-section .section-intro {
+  max-width: 620px;
 }
 
-.product-band p {
-  color: rgba(248, 250, 252, 0.72);
-}
-
-.capability-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.capability-list article {
-  display: flex;
-  gap: 14px;
-  min-height: 118px;
-  padding: 22px;
-  border: 1px solid var(--dark-line);
-  border-radius: 8px;
-  background: rgba(248, 250, 252, 0.07);
-}
-
-.capability-list svg {
-  flex: 0 0 auto;
+.testimonials-section .section-intro p {
   color: #67e8f9;
 }
 
-.capability-list h3,
-.capability-list p {
-  margin-top: 0;
+.testimonials-section .section-intro h2 {
   color: var(--white);
-}
-
-.capability-list p {
-  color: rgba(248, 250, 252, 0.7);
-}
-
-.testimonials-section .section-intro {
-  max-width: 620px;
 }
 
 .testimonial-grid {
@@ -1370,6 +1695,12 @@ main {
 
 .testimonial-grid article {
   padding: 28px;
+  border-color: var(--dark-line);
+  background: rgba(248, 250, 252, 0.07);
+}
+
+.testimonial-grid p {
+  color: rgba(248, 250, 252, 0.72);
 }
 
 .testimonial-grid strong,
@@ -1379,12 +1710,12 @@ main {
 
 .testimonial-grid strong {
   margin-top: 28px;
-  color: var(--navy);
+  color: var(--white);
 }
 
 .testimonial-grid span {
   margin-top: 6px;
-  color: #0891b2;
+  color: #67e8f9;
   font-size: 0.88rem;
   font-weight: 800;
 }
@@ -1733,9 +2064,29 @@ main {
   }
 
   .feature-grid,
-  .pricing-grid,
-  .capability-list {
+  .pricing-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .product-band {
+    min-height: auto;
+  }
+
+  .product-band-copy {
+    max-width: 720px;
+  }
+
+  .power-collage {
+    min-height: 590px;
+  }
+
+  .power-print {
+    width: clamp(180px, 29vw, 280px);
+  }
+
+  .power-print-2,
+  .power-print-3 {
+    width: clamp(200px, 32vw, 306px);
   }
 
   .feature-showcase-grid {
@@ -1762,15 +2113,16 @@ main {
 
   .remote-moment-section {
     align-items: flex-start;
-    min-height: 720px;
-    padding-top: 84px;
-    background-position: 64% center;
+    min-height: 820px;
+    padding-top: 128px;
   }
 
   .remote-moment-section::before {
-    background:
+    background-image:
       linear-gradient(180deg, rgba(10, 15, 31, 0.84), rgba(10, 15, 31, 0.42) 48%, rgba(10, 15, 31, 0.68)),
-      radial-gradient(circle at 50% 74%, rgba(6, 182, 212, 0.2), transparent 34%);
+      radial-gradient(circle at 50% 74%, rgba(6, 182, 212, 0.2), transparent 34%),
+      url("/cyberwatt-child-remote-black-tilt.png");
+    background-position: 64% center;
   }
 
   .remote-moment-copy p {
@@ -1847,8 +2199,7 @@ main {
   .feature-showcase-grid,
   .steps,
   .testimonial-grid,
-  .pricing-grid,
-  .capability-list {
+  .pricing-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1917,7 +2268,76 @@ main {
   }
 
   .product-band {
-    padding: 78px 14px;
+    padding: 78px var(--site-inline-padding);
+  }
+
+  .product-band::before {
+    inset: 24px var(--site-inline-padding);
+  }
+
+  .power-collage::after,
+  .power-collage::before,
+  .power-collage-logo-shadow,
+  .power-collage-spark,
+  .power-collage-stamp {
+    display: none;
+  }
+
+  .power-collage {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    min-height: auto;
+    perspective: none;
+  }
+
+  .power-print,
+  .power-print-2,
+  .power-print-3,
+  .power-print-4,
+  .power-print-5 {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    width: 100%;
+    min-width: 0;
+    padding: 8px;
+    transform: rotate(-2deg);
+  }
+
+  .power-print-2,
+  .power-print-4 {
+    transform: rotate(2deg);
+  }
+
+  .power-print:hover,
+  .power-print-1:hover,
+  .power-print-2:hover,
+  .power-print-3:hover,
+  .power-print-4:hover,
+  .power-print-5:hover {
+    transform: translateY(-10px) rotate(0deg);
+  }
+
+  .power-print strong {
+    font-size: 0.9rem;
+  }
+
+  .power-print figcaption span {
+    font-size: 0.72rem;
+  }
+
+  .power-print figcaption {
+    min-height: 72px;
+    margin-top: 12px;
+  }
+
+  .power-print-5 {
+    grid-column: 1 / -1;
+    max-width: 72%;
+    justify-self: center;
   }
 
   .cta-section {
