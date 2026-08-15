@@ -850,19 +850,6 @@ main {
   }
 }
 
-@supports (animation-timeline: view()) {
-  .remote-moment-section {
-    view-timeline-name: --remote-moment;
-    view-timeline-axis: block;
-  }
-
-  .remote-moment-copy {
-    animation: remoteMomentCopy both ease-out;
-    animation-timeline: --remote-moment;
-    animation-range: entry 0% exit 100%;
-  }
-}
-
 .feature-grid,
 .testimonial-grid,
 .pricing-grid {
@@ -1976,24 +1963,6 @@ main {
 
   100% {
     transform: translateX(120%);
-  }
-}
-
-@keyframes remoteMomentCopy {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 28px, 0);
-  }
-
-  24%,
-  76% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-
-  100% {
-    opacity: 0.22;
-    transform: translate3d(0, -18px, 0);
   }
 }
 
