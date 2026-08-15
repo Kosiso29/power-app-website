@@ -1711,23 +1711,910 @@ main {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.pricing-section {
+  --edge-shine-delay: 0ms;
+  --edge-shine-duration: 8s;
+  position: relative;
+  z-index: 0;
+  color: var(--white);
+  isolation: isolate;
+}
+
+.pricing-section::before {
+  position: absolute;
+  left: 50%;
+  width: 100vw;
+  content: "";
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.pricing-section::before {
+  top: 0;
+  bottom: 0;
+  z-index: -2;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(37, 99, 235, 0.48), transparent 28%),
+    radial-gradient(circle at 84% 20%, rgba(6, 182, 212, 0.24), transparent 26%),
+    linear-gradient(135deg, rgba(37, 99, 235, 0.28), rgba(6, 182, 212, 0.1) 42%, rgba(10, 15, 31, 0.96)),
+    var(--navy);
+}
+
+.pricing-section .section-intro p {
+  color: #67e8f9;
+  text-shadow: 0 0 24px rgba(37, 99, 235, 0.42);
+}
+
+.pricing-section .section-intro h2 {
+  color: var(--white);
+}
+
+.pricing-section .section-intro span {
+  color: rgba(248, 250, 252, 0.74);
+}
+
+.pricing-pattern {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  z-index: -1;
+  width: 100vw;
+  overflow: hidden;
+  transform: translateX(-50%);
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+
+.pricing-mark {
+  position: absolute;
+  display: block;
+  width: var(--mark-size);
+  height: var(--mark-size);
+  overflow: visible;
+  transform: translate(-50%, -50%);
+}
+
+.pricing-mark-icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: var(--mark-color, rgba(96, 165, 250, 0.24));
+  opacity: var(--mark-opacity, 0.24);
+  overflow: visible;
+  transform: rotate(var(--mark-rotate, 0deg));
+  transform-origin: center;
+  filter: drop-shadow(0 0 12px rgba(37, 99, 235, 0.14));
+}
+
+.pricing-mark-curve .pricing-mark-icon {
+  animation: pricingCurveSpin var(--mark-spin-duration, 58s) linear infinite;
+  animation-delay: var(--mark-animation-delay, 0s);
+}
+
+.pricing-mark-spark .pricing-mark-icon {
+  animation: pricingSparkBlink var(--spark-blink-duration, 11s) ease-out infinite;
+  animation-delay: var(--mark-animation-delay, 0s);
+}
+
+.pricing-mark:nth-child(3n) {
+  --mark-animation-delay: -9s;
+  --mark-spin-duration: 68s;
+  --spark-blink-duration: 13s;
+  --spark-peak-opacity: 0.46;
+}
+
+.pricing-mark:nth-child(4n) {
+  --mark-animation-delay: -18s;
+  --mark-spin-duration: 82s;
+  --mark-spin-turn: -360deg;
+  --spark-blink-duration: 15s;
+  --spark-peak-opacity: 0.4;
+}
+
+.pricing-mark:nth-child(5n) {
+  --mark-animation-delay: -25s;
+  --mark-spin-duration: 49s;
+  --spark-blink-duration: 9s;
+  --spark-peak-opacity: 0.5;
+}
+
+.pricing-mark:nth-child(7n) {
+  --mark-animation-delay: -33s;
+  --mark-spin-duration: 96s;
+  --mark-spin-turn: -360deg;
+  --spark-blink-duration: 17s;
+  --spark-peak-opacity: 0.38;
+}
+
+.pricing-mark-icon path {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.pricing-mark-curve .pricing-mark-icon path {
+  stroke-width: 8.5;
+}
+
+.pricing-mark-spark .pricing-mark-icon path {
+  fill: currentColor;
+  stroke: none;
+}
+
+.pricing-mark-1 {
+  --mark-size: 96px;
+  --mark-rotate: -24deg;
+  --mark-opacity: 0.22;
+  --mark-color: rgba(37, 99, 235, 0.44);
+  top: 11%;
+  left: 8%;
+}
+
+.pricing-mark-2 {
+  --mark-size: 38px;
+  --mark-rotate: 18deg;
+  --mark-opacity: 0.3;
+  --mark-color: rgba(103, 232, 249, 0.42);
+  top: 13%;
+  left: 27%;
+}
+
+.pricing-mark-3 {
+  --mark-size: 72px;
+  --mark-rotate: 124deg;
+  --mark-opacity: 0.2;
+  top: 19%;
+  left: 66%;
+}
+
+.pricing-mark-4 {
+  --mark-size: 54px;
+  --mark-rotate: -12deg;
+  --mark-opacity: 0.28;
+  --mark-color: rgba(37, 99, 235, 0.4);
+  top: 17%;
+  left: 88%;
+}
+
+.pricing-mark-5 {
+  --mark-size: 58px;
+  --mark-rotate: 72deg;
+  --mark-opacity: 0.2;
+  --mark-color: rgba(103, 232, 249, 0.32);
+  top: 39%;
+  left: 14%;
+}
+
+.pricing-mark-6 {
+  --mark-size: 34px;
+  --mark-rotate: 42deg;
+  --mark-opacity: 0.24;
+  top: 43%;
+  left: 43%;
+}
+
+.pricing-mark-7 {
+  --mark-size: 112px;
+  --mark-rotate: -146deg;
+  --mark-opacity: 0.15;
+  --mark-color: rgba(37, 99, 235, 0.48);
+  top: 55%;
+  left: 76%;
+}
+
+.pricing-mark-8 {
+  --mark-size: 44px;
+  --mark-rotate: -28deg;
+  --mark-opacity: 0.24;
+  --mark-color: rgba(103, 232, 249, 0.38);
+  top: 64%;
+  left: 9%;
+}
+
+.pricing-mark-9 {
+  --mark-size: 82px;
+  --mark-rotate: 18deg;
+  --mark-opacity: 0.18;
+  top: 78%;
+  left: 31%;
+}
+
+.pricing-mark-10 {
+  --mark-size: 50px;
+  --mark-rotate: 11deg;
+  --mark-opacity: 0.26;
+  --mark-color: rgba(37, 99, 235, 0.42);
+  top: 82%;
+  left: 58%;
+}
+
+.pricing-mark-11 {
+  --mark-size: 62px;
+  --mark-rotate: -82deg;
+  --mark-opacity: 0.2;
+  --mark-color: rgba(103, 232, 249, 0.3);
+  top: 86%;
+  left: 91%;
+}
+
+.pricing-mark-12 {
+  --mark-size: 30px;
+  --mark-rotate: 38deg;
+  --mark-opacity: 0.2;
+  top: 32%;
+  left: 96%;
+}
+
+.pricing-mark-13 {
+  --mark-size: 42px;
+  --mark-rotate: -12deg;
+  --mark-opacity: 0.17;
+  top: 5%;
+  left: 48%;
+}
+
+.pricing-mark-14 {
+  --mark-size: 26px;
+  --mark-rotate: -18deg;
+  --mark-opacity: 0.18;
+  --mark-color: rgba(103, 232, 249, 0.34);
+  top: 53%;
+  left: 55%;
+}
+
+.pricing-mark-15 {
+  --mark-size: 126px;
+  --mark-rotate: 38deg;
+  --mark-opacity: 0.12;
+  top: 70%;
+  left: 99%;
+}
+
+.pricing-mark-16 {
+  --mark-size: 28px;
+  --mark-rotate: 63deg;
+  --mark-opacity: 0.22;
+  --mark-color: rgba(37, 99, 235, 0.38);
+  top: 5%;
+  left: 74%;
+}
+
+.pricing-mark-17 {
+  --mark-size: 54px;
+  --mark-rotate: 151deg;
+  --mark-opacity: 0.16;
+  --mark-color: rgba(103, 232, 249, 0.28);
+  top: 28%;
+  left: 4%;
+}
+
+.pricing-mark-18 {
+  --mark-size: 30px;
+  --mark-rotate: -31deg;
+  --mark-opacity: 0.25;
+  --mark-color: rgba(37, 99, 235, 0.42);
+  top: 27%;
+  left: 22%;
+}
+
+.pricing-mark-19 {
+  --mark-size: 92px;
+  --mark-rotate: -64deg;
+  --mark-opacity: 0.14;
+  top: 34%;
+  left: 62%;
+}
+
+.pricing-mark-20 {
+  --mark-size: 36px;
+  --mark-rotate: 27deg;
+  --mark-opacity: 0.24;
+  --mark-color: rgba(103, 232, 249, 0.36);
+  top: 36%;
+  left: 81%;
+}
+
+.pricing-mark-21 {
+  --mark-size: 68px;
+  --mark-rotate: 42deg;
+  --mark-opacity: 0.15;
+  --mark-color: rgba(37, 99, 235, 0.36);
+  top: 49%;
+  left: 28%;
+}
+
+.pricing-mark-22 {
+  --mark-size: 42px;
+  --mark-rotate: -6deg;
+  --mark-opacity: 0.22;
+  top: 51%;
+  left: 70%;
+}
+
+.pricing-mark-23 {
+  --mark-size: 46px;
+  --mark-rotate: 102deg;
+  --mark-opacity: 0.14;
+  --mark-color: rgba(103, 232, 249, 0.3);
+  top: 59%;
+  left: 18%;
+}
+
+.pricing-mark-24 {
+  --mark-size: 24px;
+  --mark-rotate: 58deg;
+  --mark-opacity: 0.21;
+  --mark-color: rgba(37, 99, 235, 0.38);
+  top: 61%;
+  left: 47%;
+}
+
+.pricing-mark-25 {
+  --mark-size: 100px;
+  --mark-rotate: -18deg;
+  --mark-opacity: 0.13;
+  top: 68%;
+  left: 68%;
+}
+
+.pricing-mark-26 {
+  --mark-size: 32px;
+  --mark-rotate: -42deg;
+  --mark-opacity: 0.23;
+  --mark-color: rgba(103, 232, 249, 0.34);
+  top: 72%;
+  left: 84%;
+}
+
+.pricing-mark-27 {
+  --mark-size: 76px;
+  --mark-rotate: 218deg;
+  --mark-opacity: 0.13;
+  --mark-color: rgba(37, 99, 235, 0.42);
+  top: 91%;
+  left: 10%;
+}
+
+.pricing-mark-28 {
+  --mark-size: 28px;
+  --mark-rotate: 14deg;
+  --mark-opacity: 0.2;
+  top: 92%;
+  left: 42%;
+}
+
+.pricing-mark-29 {
+  --mark-size: 48px;
+  --mark-rotate: -118deg;
+  --mark-opacity: 0.14;
+  --mark-color: rgba(103, 232, 249, 0.3);
+  top: 94%;
+  left: 76%;
+}
+
+.pricing-mark-30 {
+  --mark-size: 34px;
+  --mark-rotate: 36deg;
+  --mark-opacity: 0.23;
+  --mark-color: rgba(37, 99, 235, 0.36);
+  top: 8%;
+  left: 96%;
+}
+
+.pricing-mark-31 {
+  --mark-size: 64px;
+  --mark-rotate: 14deg;
+  --mark-opacity: 0.12;
+  top: 3%;
+  left: 15%;
+}
+
+.pricing-mark-32 {
+  --mark-size: 22px;
+  --mark-rotate: -18deg;
+  --mark-opacity: 0.18;
+  --mark-color: rgba(103, 232, 249, 0.34);
+  top: 23%;
+  left: 49%;
+}
+
+.pricing-mark-33 {
+  --mark-size: 84px;
+  --mark-rotate: 82deg;
+  --mark-opacity: 0.12;
+  --mark-color: rgba(37, 99, 235, 0.38);
+  top: 42%;
+  left: 98%;
+}
+
+.pricing-mark-34 {
+  --mark-size: 26px;
+  --mark-rotate: 7deg;
+  --mark-opacity: 0.18;
+  top: 78%;
+  left: 4%;
+}
+
+.pricing-mark-35 {
+  --mark-size: 56px;
+  --mark-rotate: -206deg;
+  --mark-opacity: 0.13;
+  --mark-color: rgba(103, 232, 249, 0.28);
+  top: 73%;
+  left: 51%;
+}
+
+.pricing-mark-36 {
+  --mark-size: 40px;
+  --mark-rotate: 24deg;
+  --mark-opacity: 0.22;
+  --mark-color: rgba(37, 99, 235, 0.4);
+  top: 96%;
+  left: 95%;
+}
+
+.pricing-mark-37 {
+  --mark-size: 38px;
+  --mark-rotate: 196deg;
+  --mark-opacity: 0.1;
+  --mark-color: rgba(103, 232, 249, 0.28);
+  top: 9%;
+  left: 36%;
+}
+
+.pricing-mark-38 {
+  --mark-size: 62px;
+  --mark-rotate: 19deg;
+  --mark-opacity: 0.17;
+  --mark-color: rgba(37, 99, 235, 0.34);
+  top: 10%;
+  left: 58%;
+}
+
+.pricing-mark-39 {
+  --mark-size: 70px;
+  --mark-rotate: -39deg;
+  --mark-opacity: 0.1;
+  top: 15%;
+  left: 2%;
+}
+
+.pricing-mark-40 {
+  --mark-size: 30px;
+  --mark-rotate: -27deg;
+  --mark-opacity: 0.16;
+  --mark-color: rgba(103, 232, 249, 0.32);
+  top: 15%;
+  left: 42%;
+}
+
+.pricing-mark-41 {
+  --mark-size: 52px;
+  --mark-rotate: 72deg;
+  --mark-opacity: 0.11;
+  --mark-color: rgba(37, 99, 235, 0.34);
+  top: 21%;
+  left: 79%;
+}
+
+.pricing-mark-42 {
+  --mark-size: 22px;
+  --mark-rotate: 34deg;
+  --mark-opacity: 0.16;
+  top: 24%;
+  left: 13%;
+}
+
+.pricing-mark-43 {
+  --mark-size: 24px;
+  --mark-rotate: 154deg;
+  --mark-opacity: 0.11;
+  --mark-color: rgba(103, 232, 249, 0.28);
+  top: 27%;
+  left: 72%;
+}
+
+.pricing-mark-44 {
+  --mark-size: 36px;
+  --mark-rotate: -18deg;
+  --mark-opacity: 0.15;
+  --mark-color: rgba(37, 99, 235, 0.36);
+  top: 29%;
+  left: 91%;
+}
+
+.pricing-mark-45 {
+  --mark-size: 44px;
+  --mark-rotate: -116deg;
+  --mark-opacity: 0.1;
+  top: 34%;
+  left: 33%;
+}
+
+.pricing-mark-46 {
+  --mark-size: 26px;
+  --mark-rotate: 41deg;
+  --mark-opacity: 0.15;
+  --mark-color: rgba(103, 232, 249, 0.3);
+  top: 37%;
+  left: 52%;
+}
+
+.pricing-mark-47 {
+  --mark-size: 86px;
+  --mark-rotate: 14deg;
+  --mark-opacity: 0.09;
+  --mark-color: rgba(37, 99, 235, 0.36);
+  top: 40%;
+  left: 6%;
+}
+
+.pricing-mark-48 {
+  --mark-size: 20px;
+  --mark-rotate: -33deg;
+  --mark-opacity: 0.15;
+  top: 44%;
+  left: 86%;
+}
+
+.pricing-mark-49 {
+  --mark-size: 58px;
+  --mark-rotate: 111deg;
+  --mark-opacity: 0.1;
+  --mark-color: rgba(103, 232, 249, 0.26);
+  top: 47%;
+  left: 38%;
+}
+
+.pricing-mark-50 {
+  --mark-size: 28px;
+  --mark-rotate: 17deg;
+  --mark-opacity: 0.15;
+  --mark-color: rgba(37, 99, 235, 0.34);
+  top: 48%;
+  left: 61%;
+}
+
+.pricing-mark-51 {
+  --mark-size: 74px;
+  --mark-rotate: -181deg;
+  --mark-opacity: 0.09;
+  top: 52%;
+  left: 101%;
+}
+
+.pricing-mark-52 {
+  --mark-size: 32px;
+  --mark-rotate: 28deg;
+  --mark-opacity: 0.15;
+  --mark-color: rgba(103, 232, 249, 0.32);
+  top: 55%;
+  left: 24%;
+}
+
+.pricing-mark-53 {
+  --mark-size: 42px;
+  --mark-rotate: 49deg;
+  --mark-opacity: 0.1;
+  --mark-color: rgba(37, 99, 235, 0.34);
+  top: 59%;
+  left: 73%;
+}
+
+.pricing-mark-54 {
+  --mark-size: 24px;
+  --mark-rotate: -13deg;
+  --mark-opacity: 0.14;
+  top: 62%;
+  left: 34%;
+}
+
+.pricing-mark-55 {
+  --mark-size: 64px;
+  --mark-rotate: -72deg;
+  --mark-opacity: 0.09;
+  --mark-color: rgba(103, 232, 249, 0.28);
+  top: 65%;
+  left: 15%;
+}
+
+.pricing-mark-56 {
+  --mark-size: 34px;
+  --mark-rotate: 53deg;
+  --mark-opacity: 0.15;
+  --mark-color: rgba(37, 99, 235, 0.36);
+  top: 66%;
+  left: 55%;
+}
+
+.pricing-mark-57 {
+  --mark-size: 48px;
+  --mark-rotate: 126deg;
+  --mark-opacity: 0.1;
+  top: 69%;
+  left: 89%;
+}
+
+.pricing-mark-58 {
+  --mark-size: 22px;
+  --mark-rotate: 6deg;
+  --mark-opacity: 0.14;
+  --mark-color: rgba(103, 232, 249, 0.3);
+  top: 72%;
+  left: 39%;
+}
+
+.pricing-mark-59 {
+  --mark-size: 80px;
+  --mark-rotate: -24deg;
+  --mark-opacity: 0.09;
+  --mark-color: rgba(37, 99, 235, 0.34);
+  top: 76%;
+  left: 22%;
+}
+
+.pricing-mark-60 {
+  --mark-size: 30px;
+  --mark-rotate: -41deg;
+  --mark-opacity: 0.14;
+  top: 77%;
+  left: 71%;
+}
+
+.pricing-mark-61 {
+  --mark-size: 46px;
+  --mark-rotate: 191deg;
+  --mark-opacity: 0.1;
+  --mark-color: rgba(103, 232, 249, 0.26);
+  top: 81%;
+  left: 2%;
+}
+
+.pricing-mark-62 {
+  --mark-size: 26px;
+  --mark-rotate: 32deg;
+  --mark-opacity: 0.14;
+  --mark-color: rgba(37, 99, 235, 0.34);
+  top: 83%;
+  left: 49%;
+}
+
+.pricing-mark-63 {
+  --mark-size: 66px;
+  --mark-rotate: -132deg;
+  --mark-opacity: 0.09;
+  top: 86%;
+  left: 64%;
+}
+
+.pricing-mark-64 {
+  --mark-size: 38px;
+  --mark-rotate: -9deg;
+  --mark-opacity: 0.15;
+  --mark-color: rgba(103, 232, 249, 0.32);
+  top: 88%;
+  left: 87%;
+}
+
+.pricing-mark-65 {
+  --mark-size: 50px;
+  --mark-rotate: 24deg;
+  --mark-opacity: 0.1;
+  --mark-color: rgba(37, 99, 235, 0.34);
+  top: 94%;
+  left: 25%;
+}
+
+.pricing-mark-66 {
+  --mark-size: 20px;
+  --mark-rotate: 51deg;
+  --mark-opacity: 0.14;
+  top: 94%;
+  left: 59%;
+}
+
+.pricing-mark-67 {
+  --mark-size: 96px;
+  --mark-rotate: 63deg;
+  --mark-opacity: 0.08;
+  --mark-color: rgba(103, 232, 249, 0.24);
+  top: 2%;
+  left: 104%;
+}
+
+.pricing-mark-68 {
+  --mark-size: 24px;
+  --mark-rotate: -24deg;
+  --mark-opacity: 0.14;
+  --mark-color: rgba(37, 99, 235, 0.34);
+  top: 4%;
+  left: 5%;
+}
+
+.pricing-mark-69 {
+  --mark-size: 34px;
+  --mark-rotate: -6deg;
+  --mark-opacity: 0.1;
+  top: 57%;
+  left: 5%;
+}
+
+.pricing-mark-70 {
+  --mark-size: 18px;
+  --mark-rotate: 18deg;
+  --mark-opacity: 0.13;
+  --mark-color: rgba(103, 232, 249, 0.28);
+  top: 19%;
+  left: 35%;
+}
+
+.pricing-mark-71 {
+  --mark-size: 110px;
+  --mark-rotate: -51deg;
+  --mark-opacity: 0.08;
+  --mark-color: rgba(37, 99, 235, 0.32);
+  top: 99%;
+  left: 73%;
+}
+
+.pricing-mark-72 {
+  --mark-size: 28px;
+  --mark-rotate: 38deg;
+  --mark-opacity: 0.14;
+  --mark-color: rgba(103, 232, 249, 0.3);
+  top: 41%;
+  left: 20%;
+}
+
 .pricing-card {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  isolation: isolate;
+  overflow: hidden;
   padding: 28px;
+  border-color: rgba(37, 99, 235, 0.28);
+  background:
+    linear-gradient(180deg, rgba(248, 250, 252, 0.11), rgba(248, 250, 252, 0.055)),
+    rgba(10, 15, 31, 0.38);
+  box-shadow:
+    inset 0 1px 0 rgba(248, 250, 252, 0.12),
+    0 22px 60px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(18px) saturate(1.2);
+  transition:
+    transform 260ms ease,
+    border-color 260ms ease,
+    box-shadow 260ms ease;
+}
+
+.pricing-card:not(.featured) {
+  border-color: rgba(6, 182, 212, 0.36);
+  background:
+    radial-gradient(circle at 24% 0%, rgba(6, 182, 212, 0.18), transparent 46%),
+    linear-gradient(180deg, rgba(37, 99, 235, 0.14), rgba(6, 182, 212, 0.075)),
+    rgba(10, 15, 31, 0.44);
+  box-shadow:
+    inset 0 1px 0 rgba(248, 250, 252, 0.14),
+    0 24px 66px rgba(6, 182, 212, 0.1),
+    0 18px 52px rgba(0, 0, 0, 0.24);
+}
+
+.pricing-card:not(.featured):last-child {
+  border-color: rgba(37, 99, 235, 0.44);
+  background:
+    radial-gradient(circle at 78% 0%, rgba(37, 99, 235, 0.24), transparent 48%),
+    linear-gradient(180deg, rgba(6, 182, 212, 0.12), rgba(37, 99, 235, 0.09)),
+    rgba(10, 15, 31, 0.46);
+}
+
+.pricing-card::before {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 18px;
+  left: 18px;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.9), rgba(6, 182, 212, 0.72), transparent);
+  opacity: 0.74;
+  pointer-events: none;
+}
+
+.pricing-card::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 1px;
+  border-radius: inherit;
+  content: "";
+  pointer-events: none;
+  background:
+    linear-gradient(
+      135deg,
+      transparent 0%,
+      transparent 34%,
+      rgba(6, 182, 212, 0.1) 42%,
+      rgba(248, 250, 252, 0.62) 49%,
+      rgba(132, 204, 22, 0.14) 55%,
+      transparent 68%,
+      transparent 100%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 44%,
+      rgba(255, 255, 255, 0.28) 50%,
+      transparent 56%
+    );
+  background-position: 100% 100%;
+  background-size: 230% 230%;
+  filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.2));
+  mix-blend-mode: screen;
+  opacity: 0;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+
+.pricing-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+.pricing-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(37, 99, 235, 0.62);
+  box-shadow:
+    inset 0 1px 0 rgba(248, 250, 252, 0.14),
+    0 28px 74px rgba(37, 99, 235, 0.2);
+}
+
+.pricing-card:hover::after {
+  animation: heroButtonEdgeShine var(--edge-shine-duration) ease-in-out var(--edge-shine-delay) infinite;
 }
 
 .pricing-card.featured {
-  border-color: rgba(37, 99, 235, 0.62);
-  box-shadow: 0 22px 70px rgba(37, 99, 235, 0.15);
+  margin-block: -10px;
+  border-color: rgba(37, 99, 235, 0.76);
+  transform: none;
+  background:
+    linear-gradient(180deg, rgba(37, 99, 235, 0.24), rgba(248, 250, 252, 0.075)),
+    rgba(10, 15, 31, 0.46);
+  box-shadow:
+    inset 0 1px 0 rgba(248, 250, 252, 0.18),
+    0 34px 92px rgba(37, 99, 235, 0.28),
+    0 0 0 1px rgba(6, 182, 212, 0.12);
+}
+
+.pricing-card.featured:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    inset 0 1px 0 rgba(248, 250, 252, 0.2),
+    0 40px 108px rgba(37, 99, 235, 0.34),
+    0 0 42px rgba(6, 182, 212, 0.12);
 }
 
 .badge {
   display: inline-flex;
-  margin-bottom: 18px;
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  z-index: 2;
+  margin-bottom: 0;
   padding: 7px 10px;
-  color: #1d4ed8;
+  color: #dbeafe;
+  border: 1px solid rgba(37, 99, 235, 0.58);
   border-radius: 8px;
-  background: #dbeafe;
+  background: rgba(37, 99, 235, 0.26);
+  box-shadow: 0 0 24px rgba(37, 99, 235, 0.24);
   font-size: 0.78rem;
   font-weight: 900;
 }
@@ -1735,8 +2622,19 @@ main {
 .pricing-card strong {
   display: block;
   margin-top: 18px;
-  color: var(--navy);
+  color: #bfdbfe;
   font-size: 2rem;
+  text-shadow: 0 0 26px rgba(37, 99, 235, 0.34);
+}
+
+.pricing-card h3 {
+  color: var(--white);
+}
+
+.pricing-card p {
+  min-height: 4.85rem;
+  color: rgba(248, 250, 252, 0.84);
+  text-shadow: 0 8px 22px rgba(10, 15, 31, 0.26);
 }
 
 .pricing-card ul {
@@ -1751,26 +2649,117 @@ main {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #334155;
+  color: rgba(248, 250, 252, 0.88);
   font-size: 0.94rem;
+  text-shadow: 0 8px 22px rgba(10, 15, 31, 0.22);
 }
 
 .pricing-card li svg {
   flex: 0 0 auto;
-  color: var(--lime);
+  color: #67e8f9;
+  filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.34));
 }
 
 .pricing-card a {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
+  isolation: isolate;
+  overflow: hidden;
   width: 100%;
   min-height: 44px;
-  color: var(--navy);
-  border: 1px solid var(--line);
+  margin-top: auto;
+  color: #e0f2fe;
+  border: 1px solid rgba(6, 182, 212, 0.52);
   border-radius: 8px;
+  background: transparent;
+  background-color: transparent;
+  background-image: none;
+  box-shadow:
+    0 0 26px rgba(6, 182, 212, 0.16),
+    0 18px 46px rgba(37, 99, 235, 0.12);
   font-weight: 900;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.pricing-card a::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 1px;
+  border-radius: inherit;
+  content: "";
+  pointer-events: none;
+  background:
+    linear-gradient(
+      135deg,
+      transparent 0%,
+      transparent 34%,
+      rgba(6, 182, 212, 0.1) 42%,
+      rgba(248, 250, 252, 0.62) 49%,
+      rgba(132, 204, 22, 0.14) 55%,
+      transparent 68%,
+      transparent 100%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 44%,
+      rgba(255, 255, 255, 0.28) 50%,
+      transparent 56%
+    );
+  background-position: 100% 100%;
+  background-size: 230% 230%;
+  filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.2));
+  mix-blend-mode: screen;
+  opacity: 0;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  animation: heroButtonEdgeShine var(--edge-shine-duration) ease-in-out var(--edge-shine-delay) infinite;
+}
+
+.pricing-card a:hover {
+  transform: translateY(-2px);
+  border-color: rgba(248, 250, 252, 0.46);
+  background: transparent;
+  box-shadow:
+    0 20px 52px rgba(37, 99, 235, 0.18),
+    0 0 24px rgba(6, 182, 212, 0.12);
+}
+
+.pricing-card.featured a {
+  color: var(--white);
+  border-color: rgba(96, 165, 250, 0.88);
+  background:
+    linear-gradient(135deg, rgba(37, 99, 235, 0.24), rgba(6, 182, 212, 0.1)),
+    rgba(37, 99, 235, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(248, 250, 252, 0.22),
+    inset 0 0 28px rgba(6, 182, 212, 0.1),
+    0 0 38px rgba(6, 182, 212, 0.24),
+    0 22px 58px rgba(37, 99, 235, 0.24);
+}
+
+.pricing-card.featured a:hover {
+  border-color: rgba(248, 250, 252, 0.64);
+  background:
+    linear-gradient(135deg, rgba(37, 99, 235, 0.3), rgba(6, 182, 212, 0.14)),
+    rgba(37, 99, 235, 0.1);
+  box-shadow:
+    inset 0 1px 0 rgba(248, 250, 252, 0.28),
+    inset 0 0 34px rgba(6, 182, 212, 0.12),
+    0 0 48px rgba(6, 182, 212, 0.3),
+    0 26px 64px rgba(37, 99, 235, 0.3);
 }
 
 .faq-section {
@@ -1966,6 +2955,41 @@ main {
   }
 }
 
+@keyframes pricingCurveSpin {
+  from {
+    transform: rotate(var(--mark-rotate, 0deg));
+  }
+
+  to {
+    transform: rotate(calc(var(--mark-rotate, 0deg) + var(--mark-spin-turn, 360deg)));
+  }
+}
+
+@keyframes pricingSparkBlink {
+  0%,
+  62%,
+  66%,
+  76%,
+  100% {
+    opacity: var(--mark-opacity, 0.2);
+    filter: drop-shadow(0 0 12px rgba(37, 99, 235, 0.14));
+  }
+
+  63% {
+    opacity: var(--spark-peak-opacity, 0.44);
+    filter:
+      drop-shadow(0 0 10px rgba(248, 250, 252, 0.2))
+      drop-shadow(0 0 18px rgba(103, 232, 249, 0.44));
+  }
+
+  69% {
+    opacity: var(--spark-afterglow-opacity, 0.3);
+    filter:
+      drop-shadow(0 0 8px rgba(248, 250, 252, 0.12))
+      drop-shadow(0 0 14px rgba(37, 99, 235, 0.36));
+  }
+}
+
 @keyframes featureImageBreath {
   from {
     transform: translateY(0) scale(1.04);
@@ -2009,6 +3033,10 @@ main {
   .remote-moment-copy {
     animation: none !important;
     opacity: 1;
+  }
+
+  .pricing-mark-icon {
+    animation: none !important;
   }
 }
 
@@ -2234,6 +3262,16 @@ main {
   .product-band h2,
   .cta-section h2 {
     font-size: 2.25rem;
+  }
+
+  .pricing-card.featured,
+  .pricing-card.featured:hover {
+    margin-block: 0;
+    transform: none;
+  }
+
+  .pricing-card p {
+    min-height: auto;
   }
 
   .product-band {

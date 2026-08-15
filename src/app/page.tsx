@@ -7,7 +7,6 @@ import {
   PricingSection,
   ProductBandSection,
   RemoteMomentSection,
-  TestimonialsSection,
 } from "@/components/landing";
 
 export default function Home() {
@@ -18,7 +17,6 @@ export default function Home() {
       <HowItWorksSection />
       <RemoteMomentSection />
       <ProductBandSection />
-      <TestimonialsSection />
       <PricingSection />
       <FaqSection />
       <CtaSection />
