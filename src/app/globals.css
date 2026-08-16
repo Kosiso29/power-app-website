@@ -2786,7 +2786,7 @@ main {
   content: "";
   border: 20px solid rgba(37, 99, 235, 0.12);
   border-right-color: rgba(6, 182, 212, 0.28);
-  border-bottom-color: transparent;
+  border-bottom-color: rgba(6, 182, 212, 0.18);
   border-radius: 50%;
   transform: rotate(-18deg);
   pointer-events: none;
@@ -2864,9 +2864,12 @@ main {
   --edge-shine-delay: 0ms;
   --edge-shine-duration: 8s;
 
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
+  isolation: isolate;
+  overflow: hidden;
   gap: 34px;
   width: var(--site-inline-width);
   max-width: var(--site-max-width);
@@ -2878,6 +2881,15 @@ main {
     var(--navy);
 }
 
+.cta-section > :not(.cta-spark-field) {
+  position: relative;
+  z-index: 2;
+}
+
+.cta-copy {
+  max-width: 720px;
+}
+
 .cta-section h2,
 .cta-section p {
   color: var(--white);
@@ -2886,6 +2898,510 @@ main {
 .cta-section p {
   max-width: 680px;
   color: rgba(248, 250, 252, 0.72);
+}
+
+.cta-spark-field {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+
+.cta-spark {
+  --spark-blink-high: 1;
+  --spark-blink-low: 0.18;
+  --spark-blink-mid: 0.62;
+  --spark-flash-delay: -0.4s;
+  --spark-flash-duration: 4.8s;
+  --spark-idle-delay: 0s;
+  --spark-idle-duration: 6.8s;
+  --spark-idle-rotate: 7deg;
+  --spark-idle-soft-rotate: 2.4deg;
+  --spark-idle-soft-x: 4px;
+  --spark-idle-soft-y: -3px;
+  --spark-idle-return-rotate: -2deg;
+  --spark-idle-return-x: -3px;
+  --spark-idle-return-y: -2px;
+  --spark-idle-x: 9px;
+  --spark-idle-y: -8px;
+  --spark-pull-x: 0px;
+  --spark-pull-y: 0px;
+  --spark-opacity: 0.54;
+  --spark-hover-opacity: 0.96;
+  --spark-scale: 1;
+
+  position: absolute;
+  top: var(--spark-top);
+  left: var(--spark-left);
+  display: block;
+  width: var(--spark-size);
+  height: var(--spark-size);
+  color: var(--spark-color, rgba(103, 232, 249, 0.78));
+  opacity: var(--spark-opacity);
+  transform: translate(-50%, -50%) rotate(var(--spark-rotate, 0deg)) scale(var(--spark-scale));
+  transform-origin: center;
+  will-change: transform, opacity;
+  transition:
+    opacity 240ms ease,
+    transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-spark svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: var(--spark-blink-high);
+  filter: brightness(1);
+  transform-origin: center;
+  animation:
+    ctaSparkDrift var(--spark-idle-duration) ease-in-out var(--spark-idle-delay) infinite,
+    ctaSparkFlash var(--spark-flash-duration) steps(1, end) var(--spark-flash-delay) infinite;
+  will-change: filter, transform, opacity;
+}
+
+.cta-spark path {
+  fill: currentColor;
+}
+
+.cta-spark:nth-child(2n) {
+  --spark-blink-low: 0.16;
+  --spark-blink-mid: 0.58;
+  --spark-flash-delay: -1.1s;
+  --spark-flash-duration: 5.6s;
+  --spark-idle-delay: -1.7s;
+  --spark-idle-duration: 7.6s;
+  --spark-idle-rotate: -6deg;
+  --spark-idle-soft-rotate: -2deg;
+  --spark-idle-soft-x: -4px;
+  --spark-idle-soft-y: 3px;
+  --spark-idle-return-rotate: 1.6deg;
+  --spark-idle-return-x: 3px;
+  --spark-idle-return-y: 2px;
+  --spark-idle-x: -10px;
+  --spark-idle-y: 8px;
+}
+
+.cta-spark:nth-child(3n) {
+  --spark-blink-low: 0.14;
+  --spark-blink-mid: 0.54;
+  --spark-flash-delay: -2.8s;
+  --spark-flash-duration: 6.2s;
+  --spark-idle-delay: -4.3s;
+  --spark-idle-duration: 8.4s;
+  --spark-idle-rotate: 9deg;
+  --spark-idle-soft-rotate: 3deg;
+  --spark-idle-soft-x: 3px;
+  --spark-idle-soft-y: 5px;
+  --spark-idle-return-rotate: -2.4deg;
+  --spark-idle-return-x: -3px;
+  --spark-idle-return-y: 4px;
+  --spark-idle-x: 7px;
+  --spark-idle-y: 12px;
+}
+
+.cta-spark:nth-child(4n) {
+  --spark-blink-low: 0.22;
+  --spark-blink-mid: 0.66;
+  --spark-flash-delay: -0.2s;
+  --spark-flash-duration: 4.2s;
+  --spark-idle-delay: -0.8s;
+  --spark-idle-duration: 5.8s;
+  --spark-idle-rotate: -10deg;
+  --spark-idle-soft-rotate: -3deg;
+  --spark-idle-soft-x: 5px;
+  --spark-idle-soft-y: 2px;
+  --spark-idle-return-rotate: 2.4deg;
+  --spark-idle-return-x: -3px;
+  --spark-idle-return-y: 3px;
+  --spark-idle-x: 12px;
+  --spark-idle-y: 5px;
+}
+
+.cta-spark:nth-child(5n) {
+  --spark-blink-low: 0.12;
+  --spark-blink-mid: 0.48;
+  --spark-flash-delay: -3.7s;
+  --spark-flash-duration: 7.4s;
+  --spark-idle-delay: -6.2s;
+  --spark-idle-duration: 9.2s;
+  --spark-idle-rotate: 6deg;
+  --spark-idle-soft-rotate: 2deg;
+  --spark-idle-soft-x: -5px;
+  --spark-idle-soft-y: -4px;
+  --spark-idle-return-rotate: -1.6deg;
+  --spark-idle-return-x: 3px;
+  --spark-idle-return-y: -3px;
+  --spark-idle-x: -9px;
+  --spark-idle-y: -13px;
+}
+
+.cta-spark:nth-child(7n) {
+  --spark-blink-low: 0.2;
+  --spark-blink-mid: 0.64;
+  --spark-flash-delay: -5s;
+  --spark-flash-duration: 8.1s;
+  --spark-idle-delay: -8.1s;
+  --spark-idle-duration: 10.4s;
+  --spark-idle-rotate: -8deg;
+  --spark-idle-soft-rotate: -2.8deg;
+  --spark-idle-soft-x: 6px;
+  --spark-idle-soft-y: -3px;
+  --spark-idle-return-rotate: 2deg;
+  --spark-idle-return-x: -4px;
+  --spark-idle-return-y: -3px;
+  --spark-idle-x: 13px;
+  --spark-idle-y: -8px;
+}
+
+.cta-section:hover .cta-spark {
+  opacity: var(--spark-hover-opacity);
+  transform:
+    translate(calc(-50% + var(--spark-pull-x)), calc(-50% + var(--spark-pull-y)))
+    rotate(var(--spark-rotate, 0deg))
+    scale(var(--spark-scale));
+}
+
+.cta-section.cta-sparks-entering .cta-spark {
+  transition:
+    opacity 620ms ease,
+    transform 1800ms cubic-bezier(0.08, 0.82, 0.16, 1);
+}
+
+.cta-section.cta-sparks-paused .cta-spark {
+  opacity: var(--spark-opacity);
+  transform: translate(-50%, -50%) rotate(var(--spark-rotate, 0deg)) scale(var(--spark-scale));
+}
+
+.cta-section.cta-sparks-paused .cta-spark svg {
+  animation-play-state: paused;
+}
+
+.cta-spark-1 {
+  --spark-size: 26px;
+  --spark-top: 14%;
+  --spark-left: 6%;
+  --spark-rotate: -22deg;
+  --spark-opacity: 0.42;
+}
+
+.cta-spark-2 {
+  --spark-size: 16px;
+  --spark-top: 22%;
+  --spark-left: 18%;
+  --spark-rotate: 18deg;
+  --spark-color: rgba(6, 182, 212, 0.7);
+}
+
+.cta-spark-3 {
+  --spark-size: 44px;
+  --spark-top: 67%;
+  --spark-left: 12%;
+  --spark-rotate: 36deg;
+  --spark-opacity: 0.34;
+  --spark-hover-opacity: 0.78;
+}
+
+.cta-spark-4 {
+  --spark-size: 20px;
+  --spark-top: 78%;
+  --spark-left: 27%;
+  --spark-rotate: -48deg;
+  --spark-color: rgba(132, 204, 22, 0.62);
+}
+
+.cta-spark-5 {
+  --spark-size: 32px;
+  --spark-top: 9%;
+  --spark-left: 42%;
+  --spark-rotate: 62deg;
+  --spark-opacity: 0.38;
+}
+
+.cta-spark-6 {
+  --spark-size: 18px;
+  --spark-top: 38%;
+  --spark-left: 48%;
+  --spark-rotate: -8deg;
+  --spark-color: rgba(6, 182, 212, 0.72);
+}
+
+.cta-spark-7 {
+  --spark-size: 58px;
+  --spark-top: 72%;
+  --spark-left: 51%;
+  --spark-rotate: -28deg;
+  --spark-opacity: 0.3;
+  --spark-hover-opacity: 0.72;
+}
+
+.cta-spark-8 {
+  --spark-size: 22px;
+  --spark-top: 16%;
+  --spark-left: 62%;
+  --spark-rotate: 28deg;
+}
+
+.cta-spark-9 {
+  --spark-size: 38px;
+  --spark-top: 34%;
+  --spark-left: 68%;
+  --spark-rotate: -58deg;
+  --spark-color: rgba(6, 182, 212, 0.66);
+  --spark-opacity: 0.36;
+}
+
+.cta-spark-10 {
+  --spark-size: 18px;
+  --spark-top: 82%;
+  --spark-left: 67%;
+  --spark-rotate: 10deg;
+  --spark-color: rgba(132, 204, 22, 0.58);
+}
+
+.cta-spark-11 {
+  --spark-size: 30px;
+  --spark-top: 8%;
+  --spark-left: 78%;
+  --spark-rotate: -32deg;
+  --spark-opacity: 0.44;
+}
+
+.cta-spark-12 {
+  --spark-size: 52px;
+  --spark-top: 57%;
+  --spark-left: 80%;
+  --spark-rotate: 48deg;
+  --spark-color: rgba(37, 99, 235, 0.66);
+  --spark-opacity: 0.32;
+  --spark-hover-opacity: 0.76;
+}
+
+.cta-spark-13 {
+  --spark-size: 20px;
+  --spark-top: 28%;
+  --spark-left: 89%;
+  --spark-rotate: 22deg;
+  --spark-color: rgba(6, 182, 212, 0.7);
+}
+
+.cta-spark-14 {
+  --spark-size: 34px;
+  --spark-top: 86%;
+  --spark-left: 91%;
+  --spark-rotate: -18deg;
+  --spark-opacity: 0.38;
+}
+
+.cta-spark-15 {
+  --spark-size: 14px;
+  --spark-top: 50%;
+  --spark-left: 7%;
+  --spark-rotate: 54deg;
+  --spark-color: rgba(132, 204, 22, 0.64);
+}
+
+.cta-spark-16 {
+  --spark-size: 24px;
+  --spark-top: 47%;
+  --spark-left: 34%;
+  --spark-rotate: -64deg;
+  --spark-opacity: 0.4;
+}
+
+.cta-spark-17 {
+  --spark-size: 16px;
+  --spark-top: 63%;
+  --spark-left: 61%;
+  --spark-rotate: 40deg;
+  --spark-color: rgba(6, 182, 212, 0.74);
+}
+
+.cta-spark-18 {
+  --spark-size: 46px;
+  --spark-top: 19%;
+  --spark-left: 96%;
+  --spark-rotate: -42deg;
+  --spark-opacity: 0.3;
+  --spark-hover-opacity: 0.74;
+}
+
+.cta-spark-19 {
+  --spark-size: 17px;
+  --spark-top: 91%;
+  --spark-left: 43%;
+  --spark-rotate: 16deg;
+  --spark-color: rgba(6, 182, 212, 0.68);
+}
+
+.cta-spark-20 {
+  --spark-size: 28px;
+  --spark-top: 42%;
+  --spark-left: 94%;
+  --spark-rotate: 70deg;
+  --spark-opacity: 0.36;
+}
+
+.cta-spark-21 {
+  --spark-size: 12px;
+  --spark-top: 6%;
+  --spark-left: 30%;
+  --spark-rotate: -74deg;
+  --spark-color: rgba(103, 232, 249, 0.82);
+}
+
+.cta-spark-22 {
+  --spark-size: 24px;
+  --spark-top: 12%;
+  --spark-left: 53%;
+  --spark-rotate: 33deg;
+  --spark-opacity: 0.48;
+}
+
+.cta-spark-23 {
+  --spark-size: 18px;
+  --spark-top: 22%;
+  --spark-left: 72%;
+  --spark-rotate: -14deg;
+  --spark-color: rgba(132, 204, 22, 0.7);
+}
+
+.cta-spark-24 {
+  --spark-size: 36px;
+  --spark-top: 31%;
+  --spark-left: 12%;
+  --spark-rotate: 84deg;
+  --spark-opacity: 0.42;
+}
+
+.cta-spark-25 {
+  --spark-size: 15px;
+  --spark-top: 32%;
+  --spark-left: 36%;
+  --spark-rotate: -36deg;
+  --spark-color: rgba(6, 182, 212, 0.84);
+}
+
+.cta-spark-26 {
+  --spark-size: 26px;
+  --spark-top: 45%;
+  --spark-left: 16%;
+  --spark-rotate: 58deg;
+  --spark-opacity: 0.5;
+}
+
+.cta-spark-27 {
+  --spark-size: 13px;
+  --spark-top: 53%;
+  --spark-left: 24%;
+  --spark-rotate: 12deg;
+  --spark-color: rgba(103, 232, 249, 0.8);
+}
+
+.cta-spark-28 {
+  --spark-size: 42px;
+  --spark-top: 57%;
+  --spark-left: 42%;
+  --spark-rotate: -88deg;
+  --spark-opacity: 0.34;
+}
+
+.cta-spark-29 {
+  --spark-size: 21px;
+  --spark-top: 66%;
+  --spark-left: 7%;
+  --spark-rotate: 26deg;
+  --spark-color: rgba(37, 99, 235, 0.82);
+}
+
+.cta-spark-30 {
+  --spark-size: 16px;
+  --spark-top: 68%;
+  --spark-left: 35%;
+  --spark-rotate: -18deg;
+  --spark-opacity: 0.52;
+}
+
+.cta-spark-31 {
+  --spark-size: 30px;
+  --spark-top: 75%;
+  --spark-left: 61%;
+  --spark-rotate: 52deg;
+  --spark-color: rgba(6, 182, 212, 0.78);
+}
+
+.cta-spark-32 {
+  --spark-size: 12px;
+  --spark-top: 88%;
+  --spark-left: 17%;
+  --spark-rotate: -58deg;
+  --spark-color: rgba(132, 204, 22, 0.72);
+}
+
+.cta-spark-33 {
+  --spark-size: 24px;
+  --spark-top: 90%;
+  --spark-left: 72%;
+  --spark-rotate: 74deg;
+  --spark-opacity: 0.46;
+}
+
+.cta-spark-34 {
+  --spark-size: 15px;
+  --spark-top: 11%;
+  --spark-left: 95%;
+  --spark-rotate: -26deg;
+  --spark-color: rgba(103, 232, 249, 0.78);
+}
+
+.cta-spark-35 {
+  --spark-size: 33px;
+  --spark-top: 37%;
+  --spark-left: 55%;
+  --spark-rotate: 18deg;
+  --spark-opacity: 0.4;
+}
+
+.cta-spark-36 {
+  --spark-size: 18px;
+  --spark-top: 49%;
+  --spark-left: 77%;
+  --spark-rotate: -66deg;
+  --spark-color: rgba(37, 99, 235, 0.76);
+}
+
+.cta-spark-37 {
+  --spark-size: 14px;
+  --spark-top: 73%;
+  --spark-left: 82%;
+  --spark-rotate: 36deg;
+  --spark-color: rgba(6, 182, 212, 0.86);
+}
+
+.cta-spark-38 {
+  --spark-size: 28px;
+  --spark-top: 64%;
+  --spark-left: 96%;
+  --spark-rotate: -96deg;
+  --spark-opacity: 0.36;
+}
+
+.cta-spark-39 {
+  --spark-size: 20px;
+  --spark-top: 84%;
+  --spark-left: 50%;
+  --spark-rotate: 8deg;
+  --spark-color: rgba(103, 232, 249, 0.82);
+}
+
+.cta-spark-40 {
+  --spark-size: 44px;
+  --spark-top: 5%;
+  --spark-left: 68%;
+  --spark-rotate: -54deg;
+  --spark-opacity: 0.3;
 }
 
 .cta-section .primary-action {
@@ -2981,6 +3497,27 @@ main {
   pointer-events: none;
   -webkit-mask: url("/cyberwatt-logo.png") center / contain no-repeat;
   mask: url("/cyberwatt-logo.png") center / contain no-repeat;
+}
+
+.site-footer::after {
+  --mark-opacity: 0;
+  --spark-afterglow-opacity: 0.035;
+  --spark-peak-opacity: 0.13;
+
+  position: absolute;
+  top: calc(-116px - clamp(70px, 9vw, 126px));
+  right: calc(4% + 100px);
+  z-index: 0;
+  width: clamp(660px, 84vw, 1170px);
+  height: clamp(660px, 84vw, 1170px);
+  content: "";
+  background: linear-gradient(180deg, rgba(248, 250, 252, 0.34), var(--blue) 42%, rgba(6, 182, 212, 0.28));
+  clip-path: inset(8% 39% 44% 39%);
+  transform: translateX(42%);
+  pointer-events: none;
+  -webkit-mask: url("/cyberwatt-logo.png") center / contain no-repeat;
+  mask: url("/cyberwatt-logo.png") center / contain no-repeat;
+  animation: footerSparkTwinkle 14s ease-in-out infinite;
 }
 
 .footer-inner {
@@ -3316,6 +3853,124 @@ main {
   }
 }
 
+@keyframes footerSparkTwinkle {
+  0%,
+  28%,
+  34%,
+  100% {
+    opacity: var(--mark-opacity, 0);
+    filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.08));
+  }
+
+  29% {
+    opacity: var(--spark-afterglow-opacity, 0.08);
+    filter:
+      drop-shadow(0 0 4px rgba(248, 250, 252, 0.04))
+      drop-shadow(0 0 7px rgba(37, 99, 235, 0.08));
+  }
+
+  30% {
+    opacity: var(--spark-peak-opacity, 0.34);
+    filter:
+      drop-shadow(0 0 5px rgba(248, 250, 252, 0.09))
+      drop-shadow(0 0 9px rgba(103, 232, 249, 0.14));
+  }
+
+  31% {
+    opacity: 0.055;
+    filter:
+      drop-shadow(0 0 4px rgba(248, 250, 252, 0.05))
+      drop-shadow(0 0 6px rgba(37, 99, 235, 0.1));
+  }
+
+  32% {
+    opacity: calc(var(--spark-peak-opacity, 0.3) * 0.72);
+    filter:
+      drop-shadow(0 0 5px rgba(248, 250, 252, 0.07))
+      drop-shadow(0 0 8px rgba(103, 232, 249, 0.12));
+  }
+
+  33% {
+    opacity: var(--spark-afterglow-opacity, 0.11);
+    filter:
+      drop-shadow(0 0 4px rgba(248, 250, 252, 0.05))
+      drop-shadow(0 0 6px rgba(37, 99, 235, 0.1));
+  }
+}
+
+@keyframes ctaSparkDrift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+
+  32% {
+    transform:
+      translate3d(var(--spark-idle-soft-x), var(--spark-idle-soft-y), 0)
+      rotate(var(--spark-idle-soft-rotate))
+      scale(0.98);
+  }
+
+  54% {
+    transform:
+      translate3d(var(--spark-idle-x), var(--spark-idle-y), 0)
+      rotate(var(--spark-idle-rotate))
+      scale(1.06);
+  }
+
+  78% {
+    transform:
+      translate3d(var(--spark-idle-return-x), var(--spark-idle-return-y), 0)
+      rotate(var(--spark-idle-return-rotate))
+      scale(0.98);
+  }
+}
+
+@keyframes ctaSparkFlash {
+  0%,
+  8%,
+  10%,
+  12%,
+  48%,
+  50%,
+  52%,
+  84%,
+  86%,
+  88%,
+  100% {
+    filter: brightness(0.92);
+    opacity: var(--spark-blink-mid);
+  }
+
+  9%,
+  49%,
+  85% {
+    filter: brightness(4);
+    opacity: var(--spark-blink-high);
+  }
+
+  9.7%,
+  49.7%,
+  85.7% {
+    filter: brightness(0.42);
+    opacity: var(--spark-blink-low);
+  }
+
+  10.4%,
+  50.4%,
+  86.4% {
+    filter: brightness(3.2);
+    opacity: var(--spark-blink-high);
+  }
+
+  11.2%,
+  51.2%,
+  87.2% {
+    filter: brightness(0.7);
+    opacity: var(--spark-blink-low);
+  }
+}
+
 @keyframes featureImageBreath {
   from {
     transform: translateY(0) scale(1.04);
@@ -3439,6 +4094,10 @@ main {
   .faq-section,
   .cta-section {
     grid-template-columns: 1fr;
+  }
+
+  .cta-spark {
+    --spark-scale: 0.88;
   }
 
   .app-preview {
@@ -3650,6 +4309,23 @@ main {
   .cta-section {
     margin-bottom: 40px;
     padding: 28px;
+  }
+
+  .cta-spark-3,
+  .cta-spark-7,
+  .cta-spark-12,
+  .cta-spark-18,
+  .cta-spark-24,
+  .cta-spark-28,
+  .cta-spark-31,
+  .cta-spark-35,
+  .cta-spark-38,
+  .cta-spark-40 {
+    display: none;
+  }
+
+  .cta-spark {
+    --spark-scale: 0.72;
   }
 
   .section-intro h2,
