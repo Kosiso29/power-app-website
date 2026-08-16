@@ -2762,6 +2762,53 @@ main {
     0 26px 64px rgba(37, 99, 235, 0.3);
 }
 
+.closing-band {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-top: 1px solid rgba(6, 182, 212, 0.22);
+  border-bottom: 1px solid rgba(6, 182, 212, 0.22);
+  background:
+    radial-gradient(circle at 0% 0%, rgba(37, 99, 235, 0.26), transparent 34%),
+    radial-gradient(circle at 13% 18%, rgba(6, 182, 212, 0.18), transparent 30%),
+    radial-gradient(circle at 18% 78%, rgba(6, 182, 212, 0.14), transparent 28%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(219, 247, 255, 0.92) 58%, rgba(240, 253, 250, 0.96)),
+    #f8fafc;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.closing-band::before {
+  position: absolute;
+  top: -96px;
+  right: -124px;
+  width: 420px;
+  height: 420px;
+  content: "";
+  border: 20px solid rgba(37, 99, 235, 0.12);
+  border-right-color: rgba(6, 182, 212, 0.28);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  transform: rotate(-18deg);
+  pointer-events: none;
+}
+
+.closing-band::after {
+  position: absolute;
+  right: 18%;
+  bottom: 76px;
+  width: min(460px, 46vw);
+  height: 2px;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.36), rgba(6, 182, 212, 0.62), transparent);
+  transform: rotate(-10deg);
+  pointer-events: none;
+}
+
+.closing-band > * {
+  position: relative;
+  z-index: 1;
+}
+
 .faq-section {
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
@@ -2814,6 +2861,9 @@ main {
 }
 
 .cta-section {
+  --edge-shine-delay: 0ms;
+  --edge-shine-duration: 8s;
+
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
@@ -2836,6 +2886,282 @@ main {
 .cta-section p {
   max-width: 680px;
   color: rgba(248, 250, 252, 0.72);
+}
+
+.cta-section .primary-action {
+  color: var(--white);
+  border-color: rgba(96, 165, 250, 0.88);
+  background:
+    linear-gradient(135deg, rgba(37, 99, 235, 0.24), rgba(6, 182, 212, 0.1)),
+    rgba(37, 99, 235, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(248, 250, 252, 0.22),
+    inset 0 0 28px rgba(6, 182, 212, 0.1),
+    0 0 38px rgba(6, 182, 212, 0.24),
+    0 22px 58px rgba(37, 99, 235, 0.24);
+}
+
+.cta-section .primary-action::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 1px;
+  border-radius: inherit;
+  content: "";
+  pointer-events: none;
+  background:
+    linear-gradient(
+      135deg,
+      transparent 0%,
+      transparent 34%,
+      rgba(6, 182, 212, 0.1) 42%,
+      rgba(248, 250, 252, 0.62) 49%,
+      rgba(132, 204, 22, 0.14) 55%,
+      transparent 68%,
+      transparent 100%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 44%,
+      rgba(255, 255, 255, 0.28) 50%,
+      transparent 56%
+    );
+  background-position: 100% 100%;
+  background-size: 230% 230%;
+  filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.2));
+  mix-blend-mode: screen;
+  opacity: 0;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  animation: heroButtonEdgeShine var(--edge-shine-duration) ease-in-out var(--edge-shine-delay) infinite;
+}
+
+.cta-section .primary-action:hover {
+  transform: translateY(-2px);
+  border-color: rgba(248, 250, 252, 0.64);
+  background:
+    linear-gradient(135deg, rgba(37, 99, 235, 0.3), rgba(6, 182, 212, 0.14)),
+    rgba(37, 99, 235, 0.1);
+  box-shadow:
+    inset 0 1px 0 rgba(248, 250, 252, 0.28),
+    inset 0 0 34px rgba(6, 182, 212, 0.12),
+    0 0 48px rgba(6, 182, 212, 0.3),
+    0 26px 64px rgba(37, 99, 235, 0.3);
+}
+
+.site-footer {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 72px var(--site-inline-padding) 30px;
+  color: var(--white);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(37, 99, 235, 0.2), transparent 36%),
+    linear-gradient(180deg, #08111f 0%, #050814 100%);
+  border-top: 1px solid rgba(6, 182, 212, 0.16);
+}
+
+.site-footer::before {
+  position: absolute;
+  top: calc(-116px - clamp(70px, 9vw, 126px));
+  right: calc(4% + 100px);
+  z-index: 0;
+  width: clamp(660px, 84vw, 1170px);
+  height: clamp(660px, 84vw, 1170px);
+  content: "";
+  background: rgba(37, 99, 235, 0.055);
+  filter: drop-shadow(0 0 30px rgba(37, 99, 235, 0.03));
+  transform: translateX(42%);
+  pointer-events: none;
+  -webkit-mask: url("/cyberwatt-logo.png") center / contain no-repeat;
+  mask: url("/cyberwatt-logo.png") center / contain no-repeat;
+}
+
+.footer-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(260px, 0.72fr) minmax(260px, 0.54fr);
+  gap: 44px;
+  max-width: var(--site-max-width);
+  margin: 0 auto;
+}
+
+.footer-brand,
+.footer-contact a,
+.footer-bottom a {
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-brand {
+  gap: 12px;
+}
+
+.footer-brand-mark {
+  width: 44px;
+  height: 44px;
+}
+
+.footer-wordmark {
+  font-size: 1.42rem;
+  font-weight: 900;
+}
+
+.footer-brand-block p {
+  max-width: 430px;
+  margin: 22px 0 0;
+  color: rgba(248, 250, 252, 0.66);
+  line-height: 1.72;
+}
+
+.footer-brand-colors {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: fit-content;
+  margin-top: 24px;
+}
+
+.footer-color {
+  --footer-color-glow: rgba(248, 250, 252, 0.3);
+  --footer-glow-shadow:
+    0 0 12px var(--footer-color-glow),
+    0 0 22px var(--footer-color-glow);
+  --footer-rest-brightness: 0.88;
+  --footer-rest-opacity: 0.74;
+  --footer-rest-saturation: 0.92;
+  --footer-peak-brightness: 1.28;
+  --footer-peak-saturation: 1.12;
+
+  flex: 0 0 74px;
+  width: 74px;
+  min-width: 74px;
+  height: 5px;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 999px;
+  opacity: 0.82;
+  filter: brightness(0.96) saturate(0.98);
+  animation-duration: 14s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.footer-color-blue {
+  --footer-base-bg: var(--blue);
+  --footer-glow-bg: var(--blue);
+  --footer-color-glow: rgba(37, 99, 235, 0.62);
+
+  background: var(--footer-base-bg);
+  animation-name: footerBlueGlow;
+}
+
+.footer-color-cyan {
+  --footer-base-bg: var(--cyan);
+  --footer-glow-bg: var(--cyan);
+  --footer-color-glow: rgba(6, 182, 212, 0.62);
+
+  background: var(--footer-base-bg);
+  animation-name: footerCyanGlow;
+}
+
+.footer-color-lime {
+  --footer-base-bg: var(--lime);
+  --footer-glow-bg: var(--lime);
+  --footer-color-glow: rgba(132, 204, 22, 0.58);
+
+  background: var(--footer-base-bg);
+  animation-name: footerLimeGlow;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.footer-links h2,
+.footer-contact h2 {
+  margin: 0 0 18px;
+  color: var(--white);
+  font-size: 0.82rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.footer-links a,
+.footer-contact a {
+  width: fit-content;
+  margin-top: 12px;
+  color: rgba(248, 250, 252, 0.64);
+  font-size: 0.94rem;
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.footer-links a {
+  display: block;
+}
+
+.footer-contact {
+  padding: 18px;
+  border: 1px solid rgba(6, 182, 212, 0.16);
+  border-radius: 8px;
+  background: rgba(248, 250, 252, 0.05);
+}
+
+.footer-contact a {
+  gap: 8px;
+}
+
+.footer-links a:hover,
+.footer-contact a:hover,
+.footer-bottom a:hover {
+  color: var(--white);
+  transform: translateX(3px);
+}
+
+.footer-app-link {
+  justify-content: space-between;
+  width: 100% !important;
+  margin-top: 18px !important;
+  padding-top: 16px;
+  color: #bfdbfe !important;
+  border-top: 1px solid rgba(248, 250, 252, 0.1);
+  font-weight: 900;
+}
+
+.footer-bottom {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  max-width: var(--site-max-width);
+  margin: 56px auto 0;
+  padding-top: 22px;
+  color: rgba(248, 250, 252, 0.5);
+  border-top: 1px solid rgba(248, 250, 252, 0.1);
+  font-size: 0.88rem;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+.footer-bottom a {
+  gap: 8px;
+  color: rgba(248, 250, 252, 0.68);
+  font-weight: 800;
 }
 
 @keyframes fadeDown {
@@ -3021,6 +3347,65 @@ main {
   }
 }
 
+@keyframes footerBlueGlow {
+  0%,
+  10%,
+  100% {
+    opacity: var(--footer-rest-opacity);
+    filter: brightness(var(--footer-rest-brightness)) saturate(var(--footer-rest-saturation));
+    background: var(--footer-base-bg);
+    box-shadow: none;
+  }
+
+  4%,
+  6% {
+    opacity: 1;
+    filter: brightness(var(--footer-peak-brightness)) saturate(var(--footer-peak-saturation));
+    background: var(--footer-glow-bg);
+    box-shadow: var(--footer-glow-shadow);
+  }
+}
+
+@keyframes footerCyanGlow {
+  0%,
+  10%,
+  21%,
+  100% {
+    opacity: var(--footer-rest-opacity);
+    filter: brightness(var(--footer-rest-brightness)) saturate(var(--footer-rest-saturation));
+    background: var(--footer-base-bg);
+    box-shadow: none;
+  }
+
+  15%,
+  17% {
+    opacity: 1;
+    filter: brightness(var(--footer-peak-brightness)) saturate(var(--footer-peak-saturation));
+    background: var(--footer-glow-bg);
+    box-shadow: var(--footer-glow-shadow);
+  }
+}
+
+@keyframes footerLimeGlow {
+  0%,
+  21%,
+  33%,
+  100% {
+    opacity: var(--footer-rest-opacity);
+    filter: brightness(var(--footer-rest-brightness)) saturate(var(--footer-rest-saturation));
+    background: var(--footer-base-bg);
+    box-shadow: none;
+  }
+
+  26%,
+  28% {
+    opacity: 1;
+    filter: brightness(var(--footer-peak-brightness)) saturate(var(--footer-peak-saturation));
+    background: var(--footer-glow-bg);
+    box-shadow: var(--footer-glow-shadow);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -3096,6 +3481,10 @@ main {
 
   .remote-moment-copy h2 {
     max-width: 520px;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -3258,6 +3647,11 @@ main {
     padding-bottom: 78px;
   }
 
+  .cta-section {
+    margin-bottom: 40px;
+    padding: 28px;
+  }
+
   .section-intro h2,
   .product-band h2,
   .cta-section h2 {
@@ -3345,6 +3739,20 @@ main {
     grid-column: 1 / -1;
     max-width: 72%;
     justify-self: center;
+  }
+
+  .site-footer {
+    padding-top: 58px;
+  }
+
+  .footer-links {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 42px;
   }
 
   .cta-section {

@@ -1,6 +1,7 @@
 export { CtaSection } from "./CtaSection";
 export { FaqSection } from "./FaqSection";
 export { FeatureShowcaseSection } from "./FeatureShowcaseSection";
+export { FooterSection } from "./FooterSection";
 export { HeroSection } from "./HeroSection";
 export { HowItWorksSection } from "./HowItWorksSection";
 export { PricingSection } from "./PricingSection";

@@ -2,6 +2,7 @@ import {
   CtaSection,
   FaqSection,
   FeatureShowcaseSection,
+  FooterSection,
   HeroSection,
   HowItWorksSection,
   PricingSection,
@@ -11,15 +12,20 @@ import {
 
 export default function Home() {
   return (
-    <main>
-      <HeroSection />
-      <FeatureShowcaseSection />
-      <HowItWorksSection />
-      <RemoteMomentSection />
-      <ProductBandSection />
-      <PricingSection />
-      <FaqSection />
-      <CtaSection />
-    </main>
+    <>
+      <main>
+        <HeroSection />
+        <FeatureShowcaseSection />
+        <HowItWorksSection />
+        <RemoteMomentSection />
+        <ProductBandSection />
+        <PricingSection />
+        <div className="closing-band">
+          <FaqSection />
+          <CtaSection />
+        </div>
+      </main>
+      <FooterSection />
+    </>
   );
 }
