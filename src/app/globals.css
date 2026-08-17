@@ -1040,6 +1040,16 @@ main {
   filter: drop-shadow(0 0 14px rgba(6, 182, 212, 0.42));
 }
 
+.feature-showcase-logo-mark {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: var(--cyan);
+  filter: drop-shadow(0 0 14px rgba(6, 182, 212, 0.42));
+  -webkit-mask: url("/cyberwatt-logo.png") center / 124% 124% no-repeat;
+  mask: url("/cyberwatt-logo.png") center / 124% 124% no-repeat;
+}
+
 .feature-showcase-copy h3 {
   margin: 22px 0 0;
   color: var(--white);

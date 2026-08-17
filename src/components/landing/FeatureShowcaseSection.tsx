@@ -1,13 +1,21 @@
-import { BellRing, CalendarClock, ChartBar, Power } from "lucide-react";
+import { BellRing, CalendarClock, ChartBar } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
-import type { LandingFeature } from "./types";
+type FeaturePanel = {
+  description: string;
+  icon?: LucideIcon;
+  image: string;
+  imagePosition: string;
+  logoIcon?: boolean;
+  title: string;
+};
 
-const featurePanels: Array<LandingFeature & { image: string; imagePosition: string }> = [
+const featurePanels: FeaturePanel[] = [
   {
     title: "Instant remote control",
     description:
       "Switch lights, sockets, and appliances the moment you think of it, from anywhere.",
-    icon: Power,
+    logoIcon: true,
     image:
       "https://electronex.net/wp-content/uploads/2024/09/automated_home-transformed-1024x1024.jpeg",
     imagePosition: "center center",
@@ -66,7 +74,11 @@ export function FeatureShowcaseSection() {
                 aria-hidden="true"
               />
               <div className="feature-showcase-copy">
-                <Icon size={24} strokeWidth={1.8} aria-hidden="true" />
+                {feature.logoIcon ? (
+                  <span className="feature-showcase-logo-mark" aria-hidden="true" />
+                ) : Icon ? (
+                  <Icon size={24} strokeWidth={1.8} aria-hidden="true" />
+                ) : null}
                 <h3>{feature.title}</h3>
                 <p>{feature.description}</p>
               </div>
