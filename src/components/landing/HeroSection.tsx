@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { APP_URL } from "./constants";
@@ -19,15 +20,15 @@ export function HeroSection() {
       <div className="hero-shade" />
 
       <header className="nav">
-        <a className="brand" href="#top" aria-label="Cyberwatt home">
+        <Link className="brand" href="/" aria-label="Cyberwatt home">
           <LogoImage className="brand-mark" />
           <LogoWordmark className="brand-wordmark" />
-        </a>
+        </Link>
         <nav aria-label="Main navigation">
-          <a href="#features">Features</a>
-          <a href="#how">How it works</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#faq">FAQ</a>
+          <Link href="/">Home</Link>
+          <Link href="/about">About</Link>
+          <Link href="/pricing">Pricing</Link>
+          <Link href="/contact">Contact</Link>
         </nav>
         <a className="nav-button" href={APP_URL}>
           Get started

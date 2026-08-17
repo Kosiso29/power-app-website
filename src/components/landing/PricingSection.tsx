@@ -97,7 +97,7 @@ export function PricingSection() {
                 </li>
               ))}
             </ul>
-            <a href="#contact">
+            <a href="/contact">
               Talk to sales
               <ArrowRight size={16} aria-hidden="true" />
             </a>

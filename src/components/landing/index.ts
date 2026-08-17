@@ -7,4 +7,5 @@ export { HowItWorksSection } from "./HowItWorksSection";
 export { PricingSection } from "./PricingSection";
 export { ProductBandSection } from "./ProductBandSection";
 export { RemoteMomentSection } from "./RemoteMomentSection";
+export { SiteHeader } from "./SiteHeader";
 export { TestimonialsSection } from "./TestimonialsSection";

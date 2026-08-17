@@ -137,7 +137,7 @@ export function CtaSection() {
           more connected smart-home experience.
         </p>
       </div>
-      <a href="mailto:hello@cyberwatt.com" className="primary-action">
+      <a href="mailto:info@cyberwattenergy.com" className="primary-action">
         Request early access
         <ArrowRight size={18} aria-hidden="true" />
       </a>
