@@ -1,3 +1,4 @@
+export { AboutPowerSection } from "./AboutPowerSection";
 export { CtaSection } from "./CtaSection";
 export { FaqSection } from "./FaqSection";
 export { FeatureShowcaseSection } from "./FeatureShowcaseSection";

@@ -1,4 +1,5 @@
 import {
+  AboutPowerSection,
   CtaSection,
   FaqSection,
   FeatureShowcaseSection,
@@ -19,6 +20,7 @@ export default function Home() {
         <HowItWorksSection />
         <RemoteMomentSection />
         <ProductBandSection />
+        <AboutPowerSection />
         <PricingSection />
         <div className="closing-band">
           <FaqSection />

@@ -1348,6 +1348,7 @@ main {
 
 .product-band {
   position: relative;
+  z-index: 3;
   display: grid;
   grid-template-columns: minmax(0, 1.36fr) minmax(280px, 0.64fr);
   align-items: center;
@@ -1415,6 +1416,12 @@ main {
   content: "";
   transform: rotate(7deg);
   background: rgba(255, 255, 255, 0.22);
+}
+
+.product-band-tape-bottom {
+  top: auto;
+  bottom: 0;
+  transform: translate(-50%, 48%) rotate(3deg);
 }
 
 .power-collage::after {
@@ -3705,11 +3712,134 @@ main {
   background: rgba(248, 250, 252, 0.05);
 }
 
+.about-power-section {
+  --about-power-opacity: 0;
+  --about-power-scale: 0.24;
+  --about-power-y: 62vh;
+  --about-power-scroll-tail: 108px;
+
+  position: relative;
+  z-index: 2;
+  isolation: isolate;
+  min-height: calc(100vh + var(--about-power-scroll-tail));
+  min-height: calc(100svh + var(--about-power-scroll-tail));
+  margin-bottom: 0;
+  overflow: clip;
+  padding: 0 var(--site-inline-padding);
+  color: var(--white);
+  background:
+    linear-gradient(180deg, rgba(10, 15, 31, 0.04), rgba(10, 15, 31, 0.24)),
+    url("/cyberwatt-power-in-hands-centered.png") center center / cover no-repeat fixed,
+    var(--navy);
+}
+
+.about-power-section::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  background: transparent;
+}
+
+.about-power-static-background,
+.about-power-static-copy,
+.about-power-static-foreground {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  visibility: hidden;
+  width: 100vw;
+  height: 100vh;
+  height: 100svh;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.about-power-section[data-about-power-static="visible"] {
+  background: var(--navy);
+}
+
+.about-power-section[data-about-power-static="visible"] .about-power-static-background,
+.about-power-section[data-about-power-static="visible"] .about-power-static-copy,
+.about-power-section[data-about-power-static="visible"] .about-power-static-foreground {
+  visibility: visible;
+}
+
+.about-power-section[data-about-power-static="visible"] .about-power-foreground-shell,
+.about-power-section[data-about-power-static="visible"] .about-power-copy {
+  display: none;
+}
+
+.about-power-static-background {
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(10, 15, 31, 0.04), rgba(10, 15, 31, 0.24)),
+    url("/cyberwatt-power-in-hands-centered.png") center center / cover no-repeat,
+    var(--navy);
+}
+
+.about-power-static-foreground {
+  z-index: 4;
+  background: url("/cyberwatt-power-hands-spark-exact.png") center center / cover no-repeat;
+}
+
+.about-power-static-copy {
+  z-index: 2;
+}
+
+.about-power-foreground-shell {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: url("/cyberwatt-power-hands-spark-exact.png") center center / cover no-repeat fixed;
+  pointer-events: none;
+}
+
+.about-power-copy,
+.about-power-static-copy h2 {
+  top: clamp(96px, 14vh, 150px);
+  left: 50%;
+  z-index: 2;
+  width: min(980px, calc(100% - (var(--site-gutter) * 2)));
+  max-width: 980px;
+  text-align: center;
+  opacity: var(--about-power-opacity);
+  transform: translate3d(-50%, var(--about-power-y), 0) scale(var(--about-power-scale));
+  transform-origin: center center;
+  will-change: opacity, transform;
+  pointer-events: none;
+}
+
+.about-power-copy {
+  position: fixed;
+}
+
+.about-power-static-copy h2 {
+  position: absolute;
+}
+
+.about-power-copy h2,
+.about-power-static-copy h2 {
+  margin: 0;
+  max-width: 980px;
+  color: var(--white);
+  font-size: clamp(2.9rem, 6.25vw, 7.2rem);
+  line-height: 0.86;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-wrap: balance;
+  text-shadow:
+    0 2px 2px rgba(10, 15, 31, 0.5),
+    0 0 24px rgba(10, 15, 31, 0.86),
+    0 0 56px rgba(10, 15, 31, 0.72);
+}
+
 .about-story-section {
   position: relative;
+  z-index: 1;
   isolation: isolate;
   overflow: hidden;
-  padding: 96px var(--site-inline-padding);
+  padding: 246px var(--site-inline-padding) 96px;
   background:
     linear-gradient(180deg, #f5f9ff 0%, #ecf7ff 100%);
 }
@@ -5036,6 +5166,12 @@ main {
   .pricing-mark-icon {
     animation: none !important;
   }
+
+  .about-power-copy,
+  .about-power-static-copy h2 {
+    opacity: 1 !important;
+    transform: translate3d(-50%, 0, 0) !important;
+  }
 }
 
 @media (max-width: 980px) {
@@ -5077,6 +5213,22 @@ main {
 
   .about-control-board {
     max-width: 680px;
+  }
+
+  .about-power-section {
+    --about-power-scroll-tail: 86px;
+
+    padding: 0 var(--site-inline-padding);
+  }
+
+  .about-power-copy,
+  .about-power-static-copy h2 {
+    top: clamp(84px, 13vh, 130px);
+    max-width: 820px;
+  }
+
+  .about-story-section {
+    padding-top: 210px;
   }
 
   .about-principles-grid {
@@ -5231,11 +5383,38 @@ main {
     padding-left: var(--site-inline-padding);
   }
 
+  .about-power-section {
+    --about-power-scroll-tail: 52px;
+
+    padding: 0 var(--site-inline-padding);
+  }
+
+  .about-power-section::before {
+    background: transparent;
+  }
+
+  .about-power-copy,
+  .about-power-static-copy h2 {
+    top: clamp(72px, 12vh, 104px);
+    width: min(92vw, 440px);
+    max-width: 440px;
+  }
+
+  .about-power-copy h2,
+  .about-power-static-copy h2 {
+    max-width: 440px;
+    font-size: 2.9rem;
+  }
+
   .about-story-section,
   .about-leadership-section,
   .about-rollout-section {
     padding-top: 78px;
     padding-bottom: 78px;
+  }
+
+  .about-story-section {
+    padding-top: 154px;
   }
 
   .about-story-copy h2,

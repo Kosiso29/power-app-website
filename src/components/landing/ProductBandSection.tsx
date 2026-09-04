@@ -32,6 +32,7 @@ export function ProductBandSection() {
   return (
     <section className="product-band" aria-labelledby="product-band-title">
       <span className="product-band-tape" aria-hidden="true" />
+      <span className="product-band-tape product-band-tape-bottom" aria-hidden="true" />
       <div className="power-collage" aria-label="Cyberwatt smart power moments">
         <span className="power-collage-spark" aria-hidden="true" />
         <span className="power-collage-logo-shadow" aria-hidden="true" />
