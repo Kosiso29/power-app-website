@@ -148,7 +148,7 @@ const socialLinks = [
     ),
   },
   {
-    href: "https://www.instagram.com/cyberwatt",
+    href: "https://www.instagram.com/cyberwattenergy?stkn=MWF0anpvYndud2Z6Yg%3D%3D&utm_source=qr",
     label: "Instagram",
     icon: (
       <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
